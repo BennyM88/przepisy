@@ -33,14 +33,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: pages[_selectedPage],
       bottomNavigationBar: CurvedNavigationBar(
-          color: Colors.deepPurple.shade200,
+          color: Colors.grey.shade100,
           backgroundColor: Colors.transparent,
           animationDuration: Duration(milliseconds: 450),
           onTap: navigate,
           items: [
-            Icon(Icons.home, color: Colors.white),
-            Icon(Icons.photo, color: Colors.white),
-            Icon(Icons.favorite, color: Colors.white),
+            Icon(Icons.home_outlined),
+            Icon(Icons.favorite_outline),
+            Icon(Icons.person_outline),
           ]),
     );
   }

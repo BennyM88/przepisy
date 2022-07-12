@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.white,
-          textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme)
+          textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black)),
     );
   }
