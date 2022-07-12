@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
             Padding(
@@ -44,11 +45,80 @@ class _HomeState extends State<Home> {
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       border: InputBorder.none,
+                      icon: Icon(Icons.search),
                       hintText: 'Szukaj...',
                       hintStyle: TextStyle(color: Colors.grey.shade600)),
                 ),
               ),
             ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'Przepisy',
+                style: TextStyle(fontSize: 22),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: DefaultTabController(
+                length: 4,
+                initialIndex: 0,
+                child: Column(
+                  children: [
+                    TabBar(
+                      isScrollable: true,
+                      indicatorColor: Colors.black,
+                      tabs: [
+                        Tab(text: 'Wszytskie'),
+                        Tab(text: 'Śniadania'),
+                        Tab(text: 'Obiady'),
+                        Tab(text: 'Desery'),
+                      ],
+                      labelColor: Colors.black,
+                      unselectedLabelColor: Colors.black.withOpacity(0.3),
+                      labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                    ),
+                    SizedBox(
+                      height: 240,
+                      child: TabBarView(
+                        children: [
+                          Container(
+                            color: Colors.red,
+                            child: Center(
+                              child: Text('1'),
+                            ),
+                          ),
+                          Center(
+                            child: Text('2'),
+                          ),
+                          Center(
+                            child: Text('3'),
+                          ),
+                          Center(
+                            child: Text('4'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'Popularne',
+                style: TextStyle(fontSize: 22),
+              ),
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              child: Container(color: Colors.black),
+            ),
+            SizedBox(height: 10),
           ],
         ),
       ),
