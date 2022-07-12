@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828810893904",
+    "project_id": "przepisy-sylwii-project",
+    "storage_bucket": "przepisy-sylwii-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828810893904:android:f43e2ffda2d86e8efbcf55",
+        "android_client_info": {
+          "package_name": "com.example.przepisy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828810893904-fc8t7pe0ec77ovlq6556ccgeqqks9t58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs3V_8gxn5rAJMjwyU0J6Q99dRxUe82rM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828810893904-fc8t7pe0ec77ovlq6556ccgeqqks9t58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
