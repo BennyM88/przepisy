@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(fontSize: 22),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: DefaultTabController(
