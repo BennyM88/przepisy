@@ -1,4 +1,8 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/extras/get_przepisy_details.dart';
 
 class RecipeCard extends StatefulWidget {
   const RecipeCard({Key? key}) : super(key: key);
@@ -8,8 +12,73 @@ class RecipeCard extends StatefulWidget {
 }
 
 class _RecipeCardState extends State<RecipeCard> {
+  List<String> docIDs = [];
+  bool saved = false;
+
+  Future getID() async {
+    await FirebaseFirestore.instance.collection('przepisy-details').get().then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              docIDs.add(document.reference.id);
+            },
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: FutureBuilder(
+        future: getID(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: docIDs.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional.topCenter,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image(
+                              width: 200,
+                              height: 180,
+                              fit: BoxFit.cover,
+                              image: AssetImage('lib/photo/food.png'),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 10,
+                          right: 10,
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                saved = !saved;
+                              });
+                            },
+                            child: Icon(
+                              saved ? Icons.favorite : Icons.favorite_outline,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    GetPrzepisyDetails(docID: docIDs[index]),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
