@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore: ^3.2.1
   curved_navigation_bar: ^1.0.3
   flutter_native_splash: ^2.2.4
+  tab_indicator_styler: ^2.0.0
 
 flutter_native_splash:
   color: "#ffffff"

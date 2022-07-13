@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:przepisy/extras/recipe_card.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -69,27 +71,26 @@ class _HomeState extends State<Home> {
                   children: [
                     TabBar(
                       isScrollable: true,
-                      indicatorColor: Colors.black,
                       tabs: [
                         Tab(text: 'Wszytskie'),
                         Tab(text: 'Śniadania'),
                         Tab(text: 'Obiady'),
                         Tab(text: 'Desery'),
                       ],
+                      indicator: DotIndicator(
+                        color: Colors.black,
+                        distanceFromCenter: 16,
+                      ),
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.black.withOpacity(0.3),
                       labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
                     ),
                     SizedBox(
                       height: 240,
+                      width: double.maxFinite,
                       child: TabBarView(
                         children: [
-                          Container(
-                            color: Colors.red,
-                            child: Center(
-                              child: Text('1'),
-                            ),
-                          ),
+                          RecipeCard(),
                           Center(
                             child: Text('2'),
                           ),
