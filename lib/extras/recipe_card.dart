@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/get_przepisy_details.dart';
+import 'package:przepisy/pages/recipe_details.dart';
 
 class RecipeCard extends StatefulWidget {
   const RecipeCard({Key? key}) : super(key: key);
@@ -32,47 +33,57 @@ class _RecipeCardState extends State<RecipeCard> {
         future: getID(),
         builder: (context, snapshot) {
           return ListView.builder(
+            shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: docIDs.length,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional.topCenter,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Image(
-                              width: 200,
-                              height: 180,
-                              fit: BoxFit.cover,
-                              image: AssetImage('lib/photo/food.png'),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RecipeDetails(docID: docIDs[index])));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional.topCenter,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image(
+                                width: 200,
+                                height: 180,
+                                fit: BoxFit.cover,
+                                image: AssetImage('lib/photo/food.png'),
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          top: 10,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                saved = !saved;
-                              });
-                            },
-                            child: Icon(
-                              saved ? Icons.favorite : Icons.favorite_outline,
-                              color: Colors.white,
+                          Positioned(
+                            top: 10,
+                            right: 10,
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  saved = !saved;
+                                });
+                              },
+                              child: Icon(
+                                saved ? Icons.favorite : Icons.favorite_outline,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    GetPrzepisyDetails(docID: docIDs[index]),
-                  ],
+                        ],
+                      ),
+                      GetPrzepisyDetails(docID: docIDs[index]),
+                    ],
+                  ),
                 ),
               );
             },
