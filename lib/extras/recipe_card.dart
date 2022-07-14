@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,12 @@ import 'package:przepisy/extras/get_przepisy_details.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 
 class RecipeCard extends StatefulWidget {
-  const RecipeCard({Key? key}) : super(key: key);
+  RecipeCard({
+    Key? key,
+    required this.category,
+  }) : super(key: key);
+
+  String category;
 
   @override
   State<RecipeCard> createState() => _RecipeCardState();
@@ -17,13 +22,30 @@ class _RecipeCardState extends State<RecipeCard> {
   bool saved = false;
 
   Future getID() async {
-    await FirebaseFirestore.instance.collection('przepisy-details').get().then(
-          (snapshot) => snapshot.docs.forEach(
-            (document) {
-              docIDs.add(document.reference.id);
-            },
-          ),
-        );
+    if (widget.category == 'w') {
+      await FirebaseFirestore.instance
+          .collection('przepisy-details')
+          .get()
+          .then(
+            (snapshot) => snapshot.docs.forEach(
+              (document) {
+                docIDs.add(document.reference.id);
+              },
+            ),
+          );
+    } else {
+      await FirebaseFirestore.instance
+          .collection('przepisy-details')
+          .where('category', isEqualTo: widget.category)
+          .get()
+          .then(
+            (snapshot) => snapshot.docs.forEach(
+              (document) {
+                docIDs.add(document.reference.id);
+              },
+            ),
+          );
+    }
   }
 
   @override

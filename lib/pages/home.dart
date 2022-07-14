@@ -90,16 +90,10 @@ class _HomeState extends State<Home> {
                       width: double.maxFinite,
                       child: TabBarView(
                         children: [
-                          RecipeCard(),
-                          Center(
-                            child: Text('2'),
-                          ),
-                          Center(
-                            child: Text('3'),
-                          ),
-                          Center(
-                            child: Text('4'),
-                          ),
+                          RecipeCard(category: 'w'),
+                          RecipeCard(category: 's'),
+                          RecipeCard(category: 'o'),
+                          RecipeCard(category: 'd'),
                         ],
                       ),
                     ),
