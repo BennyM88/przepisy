@@ -14,107 +14,116 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: [
-                  Text(
-                    'Znajdź swój ',
-                    style: TextStyle(fontSize: 24),
+        child: SizedBox(
+          width: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Znajdź swój ',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                      Text(
+                        'przepis',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'przepis',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(8)),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      icon: Icon(Icons.search),
-                      hintText: 'Szukaj...',
-                      hintStyle: TextStyle(color: Colors.grey.shade600)),
                 ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Przepisy',
-                style: TextStyle(fontSize: 22),
-              ),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: DefaultTabController(
-                length: 4,
-                initialIndex: 0,
-                child: Column(
-                  children: [
-                    TabBar(
-                      isScrollable: true,
-                      tabs: [
-                        Tab(text: 'Wszytskie'),
-                        Tab(text: 'Śniadania'),
-                        Tab(text: 'Obiady'),
-                        Tab(text: 'Desery'),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          icon: Icon(Icons.search),
+                          hintText: 'Szukaj...',
+                          hintStyle: TextStyle(color: Colors.grey.shade600)),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text(
+                    'Przepisy',
+                    style: TextStyle(fontSize: 22),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: DefaultTabController(
+                    length: 4,
+                    initialIndex: 0,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          isScrollable: true,
+                          tabs: [
+                            Tab(text: 'Wszytskie'),
+                            Tab(text: 'Śniadania'),
+                            Tab(text: 'Obiady'),
+                            Tab(text: 'Desery'),
+                          ],
+                          indicator: DotIndicator(
+                            color: Colors.black,
+                            distanceFromCenter: 16,
+                          ),
+                          labelColor: Colors.black,
+                          unselectedLabelColor: Colors.black.withOpacity(0.3),
+                          labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.3,
+                          child: TabBarView(
+                            children: [
+                              RecipeCard(category: 'w'),
+                              RecipeCard(category: 's'),
+                              RecipeCard(category: 'o'),
+                              RecipeCard(category: 'd'),
+                            ],
+                          ),
+                        ),
                       ],
-                      indicator: DotIndicator(
-                        color: Colors.black,
-                        distanceFromCenter: 16,
-                      ),
-                      labelColor: Colors.black,
-                      unselectedLabelColor: Colors.black.withOpacity(0.3),
-                      labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
                     ),
-                    SizedBox(
-                      height: 240,
-                      width: double.maxFinite,
-                      child: TabBarView(
-                        children: [
-                          RecipeCard(category: 'w'),
-                          RecipeCard(category: 's'),
-                          RecipeCard(category: 'o'),
-                          RecipeCard(category: 'd'),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text(
+                    'Popularne',
+                    style: TextStyle(fontSize: 22),
+                  ),
+                ),
+                SizedBox(height: 20),
+                SizedBox(
+                  height: size.height * 0.15,
+                  child: Expanded(
+                    child: Container(color: Colors.black),
+                  ),
+                ),
+                SizedBox(height: 10),
+              ],
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Popularne',
-                style: TextStyle(fontSize: 22),
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: Container(color: Colors.black),
-            ),
-            SizedBox(height: 10),
-          ],
+          ),
         ),
       ),
     );

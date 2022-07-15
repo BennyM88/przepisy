@@ -11,7 +11,7 @@ class RecipeCard extends StatefulWidget {
     required this.category,
   }) : super(key: key);
 
-  String category;
+  final String category;
 
   @override
   State<RecipeCard> createState() => _RecipeCardState();

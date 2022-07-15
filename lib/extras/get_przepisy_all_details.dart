@@ -52,7 +52,7 @@ class GetPrzepisyAllDetails extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                Divider(color: Colors.black.withOpacity(0.3)),
+                Divider(color: Colors.black.withOpacity(0.5)),
                 Expanded(
                   child: DefaultTabController(
                     length: 2,
