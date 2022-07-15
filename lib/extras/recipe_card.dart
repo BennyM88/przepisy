@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/get_przepisy_details.dart';
+import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 
 class RecipeCard extends StatefulWidget {
@@ -19,7 +20,6 @@ class RecipeCard extends StatefulWidget {
 
 class _RecipeCardState extends State<RecipeCard> {
   List<String> docIDs = [];
-  bool saved = false;
 
   Future getID() async {
     if (widget.category == 'w') {
@@ -74,31 +74,14 @@ class _RecipeCardState extends State<RecipeCard> {
                     children: [
                       Stack(
                         children: [
-                          Align(
-                            alignment: AlignmentDirectional.topCenter,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image(
-                                width: 200,
-                                height: 180,
-                                fit: BoxFit.cover,
-                                image: AssetImage('lib/photo/food.png'),
-                              ),
-                            ),
-                          ),
+                          ShowImage(
+                              docID: docIDs[index], width: 200, height: 180),
                           Positioned(
                             top: 10,
                             right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  saved = !saved;
-                                });
-                              },
-                              child: Icon(
-                                saved ? Icons.favorite : Icons.favorite_outline,
-                                color: Colors.white,
-                              ),
+                            child: Icon(
+                              Icons.favorite_outline,
+                              color: Colors.white,
                             ),
                           ),
                         ],

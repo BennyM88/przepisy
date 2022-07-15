@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/get_przepisy_all_details.dart';
+import 'package:przepisy/extras/show_image.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class RecipeDetails extends StatelessWidget {
@@ -24,15 +25,10 @@ class RecipeDetails extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              Align(
-                alignment: AlignmentDirectional.topCenter,
-                child: Image(
+              ShowImage(
+                  docID: docID,
                   width: double.infinity,
-                  height: (size.height / 2) + 50,
-                  fit: BoxFit.cover,
-                  image: AssetImage('lib/photo/food.png'),
-                ),
-              ),
+                  height: (size.height / 2) + 50),
               Positioned(
                 top: 40,
                 right: 20,
