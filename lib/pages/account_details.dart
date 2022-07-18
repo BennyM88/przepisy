@@ -17,7 +17,22 @@ class _AccountDetailsState extends State<AccountDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('zalogowany: ' + user.email!),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('zalogowany: ' + user.email!),
+            MaterialButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              color: Colors.black,
+              child: Text(
+                'wyloguj',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

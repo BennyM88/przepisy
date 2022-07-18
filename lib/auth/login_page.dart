@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: signIn,
                         child: Container(
                           width: size.width * 0.4,
                           padding: EdgeInsets.all(15),
