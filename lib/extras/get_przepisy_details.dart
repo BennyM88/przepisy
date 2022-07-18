@@ -38,7 +38,7 @@ class GetPrzepisyDetails extends StatelessWidget {
             ],
           );
         }
-        return Center(child: CircularProgressIndicator());
+        return Text('');
       }),
     );
   }

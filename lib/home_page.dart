@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  final List<Widget> pages = [
+  final List<Widget> _pages = [
     Home(),
     Favorite(),
     Account(),
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_selectedPage],
+      body: _pages[_selectedPage],
       bottomNavigationBar: CurvedNavigationBar(
           color: Colors.grey.shade100,
           backgroundColor: Colors.transparent,

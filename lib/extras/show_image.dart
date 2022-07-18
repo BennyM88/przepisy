@@ -37,7 +37,10 @@ class ShowImage extends StatelessWidget {
             ),
           );
         }
-        return Center(child: CircularProgressIndicator());
+        return SizedBox(
+            width: 200,
+            height: 180,
+            child: Center(child: CircularProgressIndicator()));
       }),
     );
   }
