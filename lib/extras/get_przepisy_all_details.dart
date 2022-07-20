@@ -11,10 +11,10 @@ class GetPrzepisyAllDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference przepisy =
+    CollectionReference recipe =
         FirebaseFirestore.instance.collection('przepisy-details');
     return FutureBuilder<DocumentSnapshot>(
-      future: przepisy.doc(docID).get(),
+      future: recipe.doc(docID).get(),
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =

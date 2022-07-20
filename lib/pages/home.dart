@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/recipe_card.dart';
+import 'package:przepisy/pages/recipe_details.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class Home extends StatefulWidget {
@@ -12,6 +14,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> data = [];
+  List<String> doc = [];
+
+  CollectionReference recipe =
+      FirebaseFirestore.instance.collection('przepisy-details');
+
+  Future getData() async {
+    QuerySnapshot querySnapshot = await recipe.get();
+
+    final allDishNames =
+        querySnapshot.docs.map((doc) => doc.get('dish name')).toList();
+
+    data = allDishNames.map((e) => e.toString()).toList();
+
+    recipe.get().then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              doc.add(document.reference.id);
+            },
+          ),
+        );
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -43,20 +74,35 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 20),
                 //search bar
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: TextField(
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(Icons.search),
-                          hintText: 'Szukaj...',
-                          hintStyle: TextStyle(color: Colors.grey.shade600)),
+                GestureDetector(
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate:
+                          CustomSearchDelegate(searchTerms: data, docIDs: doc),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(Icons.search, color: Colors.grey.shade600),
+                            SizedBox(width: 10),
+                            Text(
+                              'Szukaj...',
+                              style: TextStyle(
+                                  color: Colors.grey.shade600, fontSize: 14),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -132,6 +178,87 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  CustomSearchDelegate({required this.searchTerms, required this.docIDs});
+  List<String> searchTerms = [];
+  List<String> docIDs = [];
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: Icon(Icons.clear),
+      ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back_rounded),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var x in searchTerms) {
+      if (x.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(x);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => RecipeDetails(docID: docIDs[index])));
+          },
+          child: ListTile(
+            title: Text(result),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var x in searchTerms) {
+      if (x.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(x);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => RecipeDetails(docID: docIDs[index])));
+          },
+          child: ListTile(
+            title: Text(result),
+          ),
+        );
+      },
     );
   }
 }
