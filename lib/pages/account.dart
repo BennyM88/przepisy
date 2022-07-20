@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/auth/auth_page.dart';
 import 'package:przepisy/pages/account_details.dart';
-import 'package:przepisy/pages/login_page.dart';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);
@@ -14,16 +14,16 @@ class Account extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          /*if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          }
+          }*/
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
               return AccountDetails();
             } else {
-              return LoginPage();
+              return AuthPage();
             }
           } else {
             return Center(

@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20),
+                //title
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Row(
@@ -41,6 +42,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: 20),
+                //search bar
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Container(
@@ -59,6 +61,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: 20),
+                //titile
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
@@ -67,6 +70,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: 10),
+                //list of all recipes
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: DefaultTabController(
@@ -106,6 +110,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: 20),
+                //title
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
@@ -114,6 +119,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: 20),
+                //list of popular recipes
                 SizedBox(
                   height: size.height * 0.15,
                   child: Expanded(
