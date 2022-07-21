@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_function_literals_in_foreach_calls
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                         TabBar(
                           isScrollable: true,
                           tabs: [
-                            Tab(text: 'Wszytskie'),
+                            Tab(text: 'Wszystkie'),
                             Tab(text: 'Śniadania'),
                             Tab(text: 'Obiady'),
                             Tab(text: 'Desery'),
