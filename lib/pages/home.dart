@@ -193,6 +193,9 @@ class CustomSearchDelegate extends SearchDelegate {
   }
 
   @override
+  String? get searchFieldLabel => 'Szukaj...';
+
+  @override
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
@@ -235,7 +238,7 @@ class CustomSearchDelegate extends SearchDelegate {
                         RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: ListTile(
-            title: Text(result),
+            title: Text(result, style: TextStyle(fontWeight: FontWeight.bold)),
           ),
         );
       },
@@ -263,7 +266,8 @@ class CustomSearchDelegate extends SearchDelegate {
                         RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: ListTile(
-            title: Text(result),
+            title: Text(result, style: TextStyle(fontWeight: FontWeight.bold)),
+            leading: Icon(Icons.search),
           ),
         );
       },

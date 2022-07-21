@@ -45,6 +45,13 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //logo
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                  child: Image.asset('assets/logo.png',
+                      width: double.infinity, height: size.height * 0.1),
+                ),
+                SizedBox(height: 20),
                 //email text
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35.0),

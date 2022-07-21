@@ -31,6 +31,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -44,6 +45,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //logo
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                  child: Image.asset('assets/logo.png',
+                      width: double.infinity, height: size.height * 0.1),
+                ),
+                SizedBox(height: 20),
                 //info text
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
