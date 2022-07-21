@@ -186,6 +186,12 @@ class CustomSearchDelegate extends SearchDelegate {
   CustomSearchDelegate({required this.searchTerms, required this.docIDs});
   List<String> searchTerms = [];
   List<String> docIDs = [];
+
+  int findIndex(var item) {
+    int index = searchTerms.indexWhere((element) => element.contains(item));
+    return index;
+  }
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -225,7 +231,8 @@ class CustomSearchDelegate extends SearchDelegate {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => RecipeDetails(docID: docIDs[index])));
+                    builder: (context) =>
+                        RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: ListTile(
             title: Text(result),
@@ -252,7 +259,8 @@ class CustomSearchDelegate extends SearchDelegate {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => RecipeDetails(docID: docIDs[index])));
+                    builder: (context) =>
+                        RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: ListTile(
             title: Text(result),

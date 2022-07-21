@@ -106,7 +106,7 @@ class GetPrzepisyAllDetails extends StatelessWidget {
             ),
           );
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(child: CircularProgressIndicator(color: Colors.black));
       }),
     );
   }

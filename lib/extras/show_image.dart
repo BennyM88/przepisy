@@ -30,8 +30,8 @@ class ShowImage extends StatelessWidget {
                 width: width,
                 height: height,
                 fit: BoxFit.cover,
-                placeholder: (context, url) =>
-                    Center(child: CircularProgressIndicator()),
+                placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(color: Colors.black)),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
@@ -40,7 +40,8 @@ class ShowImage extends StatelessWidget {
         return SizedBox(
             width: 200,
             height: 180,
-            child: Center(child: CircularProgressIndicator()));
+            child:
+                Center(child: CircularProgressIndicator(color: Colors.black)));
       }),
     );
   }
