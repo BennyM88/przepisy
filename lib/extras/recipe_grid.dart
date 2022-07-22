@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 
-import 'get_przepisy_details.dart';
+import 'get_recipe_details.dart';
 
 class RecipeGrid extends StatefulWidget {
   const RecipeGrid({Key? key}) : super(key: key);
@@ -87,7 +87,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                       Positioned(
                         bottom: itemHeight / 14,
                         left: 10,
-                        child: GetPrzepisyDetails(docID: docIDs[index]),
+                        child: GetRecipeDetails(docID: docIDs[index]),
                       ),
                     ],
                   ),

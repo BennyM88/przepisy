@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedPage = 0;
 
-  void navigate(int index) {
+  void _navigate(int index) {
     setState(() {
       _selectedPage = index;
     });
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           color: Colors.grey.shade100,
           backgroundColor: Colors.transparent,
           animationDuration: Duration(milliseconds: 450),
-          onTap: navigate,
+          onTap: _navigate,
           items: [
             Icon(Icons.home_outlined),
             Icon(Icons.favorite_outline),

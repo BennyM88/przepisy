@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:przepisy/extras/get_przepisy_all_details.dart';
+import 'package:przepisy/extras/get_recipe_all_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -53,7 +53,7 @@ class RecipeDetails extends StatelessWidget {
             ],
           ),
         ),
-        panel: GetPrzepisyAllDetails(docID: docID),
+        panel: GetRecipeAllDetails(docID: docID),
       ),
     );
   }

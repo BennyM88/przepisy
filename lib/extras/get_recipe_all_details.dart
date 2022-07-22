@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class GetPrzepisyAllDetails extends StatelessWidget {
+class GetRecipeAllDetails extends StatelessWidget {
   final String docID;
 
-  GetPrzepisyAllDetails({required this.docID});
+  GetRecipeAllDetails({required this.docID});
 
   @override
   Widget build(BuildContext context) {
