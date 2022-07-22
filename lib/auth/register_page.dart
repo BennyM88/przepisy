@@ -103,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !EmailValidator.validate(email)
-                                  ? 'Wprowadź poprawny email'
+                                  ? 'Wprowadź poprawny e-mail'
                                   : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
