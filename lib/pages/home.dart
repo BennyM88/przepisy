@@ -2,7 +2,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/extras/get_przepisy_details.dart';
 import 'package:przepisy/extras/recipe_card.dart';
+import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -220,13 +222,18 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List<String> matchQuery = [];
+    final size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 96) / 2;
+    final double itemWidth = size.width / 2;
     for (var x in searchTerms) {
       if (x.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(x);
       }
     }
-    return ListView.builder(
+    return GridView.builder(
       itemCount: matchQuery.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: itemWidth / itemHeight),
       itemBuilder: (context, index) {
         var result = matchQuery[index];
         return GestureDetector(
@@ -237,8 +244,48 @@ class CustomSearchDelegate extends SearchDelegate {
                     builder: (context) =>
                         RecipeDetails(docID: docIDs[findIndex(result)])));
           },
-          child: ListTile(
-            title: Text(result, style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Stack(
+              children: [
+                Container(
+                  height: 270,
+                  width: size.width / 2,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: Offset(1, 2),
+                        blurRadius: 8,
+                        spreadRadius: 0.5,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: ShowImage(
+                      docID: docIDs[findIndex(result)],
+                      width: size.width / 2,
+                      height: 200),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Icon(
+                    Icons.favorite_outline,
+                    color: Colors.white,
+                  ),
+                ),
+                Positioned(
+                  bottom: itemHeight / 9,
+                  left: 10,
+                  child: GetPrzepisyDetails(docID: docIDs[findIndex(result)]),
+                ),
+              ],
+            ),
           ),
         );
       },
