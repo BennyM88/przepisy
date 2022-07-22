@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/show_image.dart';
+import 'package:przepisy/pages/recipe_details.dart';
 
 import 'get_przepisy_details.dart';
 
@@ -40,47 +41,56 @@ class _RecipeGridState extends State<RecipeGrid> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: itemWidth / itemHeight),
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 250,
-                      width: size.width / 2,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
-                            blurRadius: 8,
-                            spreadRadius: 0.5,
-                          ),
-                        ],
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RecipeDetails(docID: docIDs[index])));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 270,
+                        width: size.width / 2,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade500,
+                              offset: Offset(1, 2),
+                              blurRadius: 8,
+                              spreadRadius: 0.5,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: ShowImage(
-                          docID: docIDs[index],
-                          width: size.width / 2,
-                          height: 200),
-                    ),
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Icon(
-                        Icons.favorite_outline,
-                        color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: ShowImage(
+                            docID: docIDs[index],
+                            width: size.width / 2,
+                            height: 200),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 25,
-                      left: 10,
-                      child: GetPrzepisyDetails(docID: docIDs[index]),
-                    ),
-                  ],
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: Icon(
+                          Icons.favorite_outline,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 20,
+                        left: 10,
+                        child: GetPrzepisyDetails(docID: docIDs[index]),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
