@@ -20,6 +20,7 @@ class GetRecipeAllDetails extends StatelessWidget {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
           List<String> ingredients = List.from(data['ingredients']);
+          String servings = data['amount'] < 5 ? 'porcje' : 'porcji';
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -47,6 +48,13 @@ class GetRecipeAllDetails extends StatelessWidget {
                     SizedBox(width: 4),
                     Text(
                       '${data['time']} min',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    SizedBox(width: 4),
+                    Text('|'),
+                    SizedBox(width: 4),
+                    Text(
+                      '${data['amount']} $servings',
                       style: TextStyle(fontSize: 14),
                     ),
                   ],

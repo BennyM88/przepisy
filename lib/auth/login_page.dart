@@ -3,6 +3,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/auth/forgot_pw_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -36,6 +37,19 @@ class _LoginPageState extends State<LoginPage> {
       print(e.message);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+  }
+
+  Future signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser =
+        await GoogleSignIn(scopes: <String>['email']).signIn();
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+
+    await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   @override
@@ -190,6 +204,19 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(height: 25),
+                  GestureDetector(
+                    onTap: signInWithGoogle,
+                    child: Center(
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: Colors.black, shape: BoxShape.circle),
+                        child: Image.asset('assets/google.png'),
+                      ),
                     ),
                   ),
                   SizedBox(height: 50),
