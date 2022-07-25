@@ -17,7 +17,7 @@ class RecipeGrid extends StatefulWidget {
 class _RecipeGridState extends State<RecipeGrid> {
   List<String> docIDs = [];
 
-  Future getID() async {
+  Future<void> getID() async {
     await FirebaseFirestore.instance.collection('przepisy-details').get().then(
           (snapshot) => snapshot.docs.forEach(
             (document) {

@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   CollectionReference recipe =
       FirebaseFirestore.instance.collection('przepisy-details');
 
-  Future getData() async {
+  Future<void> getData() async {
     QuerySnapshot querySnapshot = await recipe.get();
 
     final allDishNames =

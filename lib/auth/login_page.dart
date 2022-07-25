@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future signIn() async {
+  Future<void> signIn() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
@@ -33,13 +33,12 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
-    } on FirebaseAuthException catch (e) {
-      print(e.message);
+    } on FirebaseAuthException catch (_) {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
-  Future signInWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>['email']).signIn();
 

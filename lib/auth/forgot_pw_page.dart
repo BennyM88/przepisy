@@ -19,7 +19,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future passwordReset() async {
+  Future<void> passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
@@ -28,8 +28,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
-    } on FirebaseAuthException catch (e) {
-      print(e.message);
+    } on FirebaseAuthException catch (_) {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }

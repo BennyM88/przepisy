@@ -26,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future signUp() async {
+  Future<void> signUp() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
@@ -37,8 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
-      } on FirebaseAuthException catch (e) {
-        print(e.message);
+      } on FirebaseAuthException catch (_) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     } else {

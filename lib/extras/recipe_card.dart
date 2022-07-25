@@ -21,7 +21,7 @@ class RecipeCard extends StatefulWidget {
 class _RecipeCardState extends State<RecipeCard> {
   List<String> docIDs = [];
 
-  Future getID() async {
+  Future<void> getID() async {
     if (widget.category == 'w') {
       await FirebaseFirestore.instance
           .collection('przepisy-details')
