@@ -249,7 +249,7 @@ class CustomSearchDelegate extends SearchDelegate {
             child: Stack(
               children: [
                 Container(
-                  height: 270,
+                  height: size.height * 0.35,
                   width: size.width / 2,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -269,7 +269,7 @@ class CustomSearchDelegate extends SearchDelegate {
                   child: ShowImage(
                       docID: docIDs[findIndex(result)],
                       width: size.width / 2,
-                      height: 200),
+                      height: size.height * 0.26),
                 ),
                 Positioned(
                   top: 10,

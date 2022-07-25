@@ -54,7 +54,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                   child: Stack(
                     children: [
                       Container(
-                        height: 270,
+                        height: size.height * 0.35,
                         width: size.width / 2,
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -74,7 +74,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                         child: ShowImage(
                             docID: docIDs[index],
                             width: size.width / 2,
-                            height: 200),
+                            height: size.height * 0.26),
                       ),
                       Positioned(
                         top: 10,
