@@ -14,6 +14,10 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
+  var snackBar = SnackBar(
+      content: Text('Błędne dane, użytkownik nie istnieje'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.red);
 
   Future passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -25,8 +29,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
     } on FirebaseAuthException catch (e) {
-      print('Failed with error code: ${e.code}');
       print(e.message);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 

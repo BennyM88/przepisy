@@ -17,6 +17,14 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  var snackBar = SnackBar(
+      content: Text('Już istnieje użytkownik o podanym emailu'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.red);
+  var pswdSnackBar = SnackBar(
+      content: Text('Podane hasła są różne'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.red);
 
   Future signUp() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -30,9 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
       } on FirebaseAuthException catch (e) {
-        print('Failed with error code: ${e.code}');
         print(e.message);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(pswdSnackBar);
     }
   }
 

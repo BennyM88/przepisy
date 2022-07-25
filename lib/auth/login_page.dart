@@ -17,6 +17,10 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  var snackBar = SnackBar(
+      content: Text('Błędne dane, użytkownik nie istnieje'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.red);
 
   Future signIn() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -29,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
-      print('Failed with error code: ${e.code}');
       print(e.message);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
