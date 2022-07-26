@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/recipe_grid.dart';
 
 class FavoriteRecipes extends StatefulWidget {
@@ -24,7 +25,7 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                 SizedBox(height: 20),
                 //title
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
                     children: [
                       Text(
@@ -42,7 +43,8 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                 SizedBox(height: 20),
                 //grid of fav
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: smallPadding / 2),
                   child: SizedBox(
                       height: size.height * 0.75,
                       child: Column(

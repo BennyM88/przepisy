@@ -3,6 +3,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -59,14 +60,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 children: [
                   //logo
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
                   SizedBox(height: 20),
                   //info text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Text(
                       'Podaj swój e-mail, a wyślemy Ci link do zresetowania hasła',
                       textAlign: TextAlign.center,
@@ -76,13 +78,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   SizedBox(height: 25),
                   //email text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
                   SizedBox(height: 10),
                   //email textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -118,7 +121,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   SizedBox(height: 50),
                   //reset password button
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
                       onTap: passwordReset,
                       child: Container(

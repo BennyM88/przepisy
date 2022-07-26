@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/auth/forgot_pw_page.dart';
+import 'package:przepisy/constants.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -73,20 +74,22 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   //logo
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
                   SizedBox(height: 20),
                   //email text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
                   SizedBox(height: 10),
                   //email textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -122,13 +125,14 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 25),
                   //password text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('HASŁO'),
                   ),
                   SizedBox(height: 10),
                   //password textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -165,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 50),
                   //login button & forgot pswd
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

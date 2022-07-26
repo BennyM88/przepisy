@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 
@@ -50,7 +51,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                               RecipeDetails(docID: docIDs[index])));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(smallPadding / 2),
                   child: Stack(
                     children: [
                       Container(

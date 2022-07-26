@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/get_recipe_details.dart';
 import 'package:przepisy/extras/recipe_card.dart';
 import 'package:przepisy/extras/show_image.dart';
@@ -59,7 +60,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 20),
                 //title
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
                     children: [
                       Text(
@@ -85,9 +86,10 @@ class _HomeState extends State<Home> {
                     );
                   },
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: smallPadding),
                     child: Container(
-                      padding: const EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: smallPadding / 2),
                       decoration: BoxDecoration(
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(8)),
@@ -111,7 +113,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 20),
                 //titile
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
                     'Przepisy',
                     style: TextStyle(fontSize: 22),
@@ -120,7 +122,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 10),
                 //list of all recipes
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: DefaultTabController(
                     length: 4,
                     initialIndex: 0,
@@ -140,7 +142,8 @@ class _HomeState extends State<Home> {
                           ),
                           labelColor: Colors.black,
                           unselectedLabelColor: Colors.black.withOpacity(0.3),
-                          labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                          labelPadding:
+                              EdgeInsets.symmetric(horizontal: smallPadding),
                         ),
                         SizedBox(
                           height: size.height * 0.3,
@@ -160,7 +163,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 20),
                 //title
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
                     'Popularne',
                     style: TextStyle(fontSize: 22),
@@ -245,7 +248,7 @@ class CustomSearchDelegate extends SearchDelegate {
                         RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(smallPadding / 2),
             child: Stack(
               children: [
                 Container(

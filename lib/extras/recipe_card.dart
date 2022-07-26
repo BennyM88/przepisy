@@ -50,6 +50,7 @@ class _RecipeCardState extends State<RecipeCard> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
         future: getID(),
@@ -75,7 +76,9 @@ class _RecipeCardState extends State<RecipeCard> {
                       Stack(
                         children: [
                           ShowImage(
-                              docID: docIDs[index], width: 200, height: 180),
+                              docID: docIDs[index],
+                              width: size.width / 2,
+                              height: size.height * 0.24),
                           Positioned(
                             top: 10,
                             right: 10,

@@ -3,6 +3,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -77,20 +78,22 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   //logo
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
                   SizedBox(height: 20),
                   //email text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
                   SizedBox(height: 10),
                   //email textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -126,13 +129,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 25),
                   //password text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('HASŁO'),
                   ),
                   SizedBox(height: 10),
                   //password textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -169,13 +173,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 25),
                   //confirm password text
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('POTWIERDŹ'),
                   ),
                   SizedBox(height: 10),
                   //confirm password textfield
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
@@ -212,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 50),
                   //register button
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
                       onTap: signUp,
                       child: Container(

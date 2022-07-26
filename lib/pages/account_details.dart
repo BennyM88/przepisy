@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 
 class AccountDetails extends StatefulWidget {
   const AccountDetails({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             SizedBox(height: 50),
             //email title
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
                 'Adres e-mail',
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
@@ -35,14 +36,14 @@ class _AccountDetailsState extends State<AccountDetails> {
             SizedBox(height: 5),
             //user email
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
                 user.email!,
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
                 color: Colors.black,
                 thickness: 1,
@@ -51,7 +52,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             SizedBox(height: 20),
             //date title
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
                 'Data założenia',
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
@@ -60,7 +61,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             SizedBox(height: 5),
             //user date
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Row(
                 children: [
                   Text(
@@ -79,7 +80,7 @@ class _AccountDetailsState extends State<AccountDetails> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
                 color: Colors.black,
                 thickness: 1,
