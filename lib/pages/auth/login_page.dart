@@ -230,20 +230,37 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: smallPadding),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                            child: Divider(
+                          thickness: 1,
+                          color: Colors.black,
+                        )),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: Text('connect_with'.tr),
+                        ),
+                        const Expanded(
+                            child: Divider(
+                          thickness: 1,
+                          color: Colors.black,
+                        )),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: signInWithGoogle,
                     child: Center(
-                      child: Container(
-                        width: 60,
-                        height: 60,
-                        decoration: const BoxDecoration(
-                            color: Colors.black, shape: BoxShape.circle),
-                        child: Image.asset('assets/google.png'),
-                      ),
+                      child: Image.asset('assets/google.png'),
                     ),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
                   //create a new acc
                   GestureDetector(
                     onTap: widget.showRegisterPage,

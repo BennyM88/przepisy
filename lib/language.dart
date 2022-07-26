@@ -39,6 +39,7 @@ class Language extends Translations {
           'confirm': 'CONFIRM',
           'sign_up': 'SIGN UP',
           'have_acc': 'ALREADY HAVE AN ACCOUNT?',
+          'connect_with': 'CONNECT WITH',
           //details
           'ingredients': 'Ingredients',
           'preparation': 'Preparation',
@@ -79,6 +80,7 @@ class Language extends Translations {
           'confirm': 'POTWIERDŹ',
           'sign_up': 'ZAREJESTRUJ',
           'have_acc': 'MASZ JUŻ KONTO?',
+          'connect_with': 'POŁĄCZ Z',
           //details
           'ingredients': 'Składniki',
           'preparation': 'Przygotowanie',
