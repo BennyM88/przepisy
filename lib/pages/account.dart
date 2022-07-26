@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:przepisy/auth/auth_page.dart';
 import 'package:przepisy/pages/account_details.dart';
+import 'package:przepisy/pages/auth/auth_page.dart';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);

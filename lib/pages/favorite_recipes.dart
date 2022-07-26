@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:przepisy/constants.dart';
-import 'package:przepisy/extras/recipe_grid.dart';
+import 'package:przepisy/widgets/recipe_grid.dart';
 
 class FavoriteRecipes extends StatefulWidget {
   const FavoriteRecipes({Key? key}) : super(key: key);

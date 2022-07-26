@@ -3,8 +3,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/constants.dart';
-import 'package:przepisy/extras/get_recipe_details.dart';
-import 'package:przepisy/extras/recipe_card.dart';
+import 'package:przepisy/extras/show_recipe_details.dart';
+import 'package:przepisy/widgets/recipe_card.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -285,7 +285,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 Positioned(
                   bottom: itemHeight / 9,
                   left: 10,
-                  child: GetRecipeDetails(docID: docIDs[findIndex(result)]),
+                  child: ShowRecipeDetails(docID: docIDs[findIndex(result)]),
                 ),
               ],
             ),

@@ -3,10 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GetRecipeDetails extends StatelessWidget {
+class ShowRecipeDetails extends StatelessWidget {
   final String docID;
 
-  GetRecipeDetails({required this.docID});
+  ShowRecipeDetails({required this.docID});
 
   @override
   Widget build(BuildContext context) {
