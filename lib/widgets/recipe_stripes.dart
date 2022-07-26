@@ -16,7 +16,12 @@ class _RecipeStripesState extends State<RecipeStripes> {
   List<String> docIDs = [];
 
   Future<void> getID() async {
-    await FirebaseFirestore.instance.collection('przepisy-details').get().then(
+    await FirebaseFirestore.instance
+        .collection('przepisy-details')
+        .orderBy('time', descending: false)
+        .limit(2)
+        .get()
+        .then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
               docIDs.add(document.reference.id);
@@ -43,7 +48,7 @@ class _RecipeStripesState extends State<RecipeStripes> {
                     ShowImage(
                         docID: docIDs[index],
                         width: size.width,
-                        height: size.height * 0.1),
+                        height: size.height * 0.12),
                     Positioned(
                         top: 10,
                         left: 10,

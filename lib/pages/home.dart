@@ -167,7 +167,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
-                    'popular'.tr,
+                    'fastest'.tr,
                     style: const TextStyle(fontSize: 22),
                   ),
                 ),
@@ -175,11 +175,16 @@ class _HomeState extends State<Home> {
                 //list of popular recipes
                 SizedBox(
                   height: size.height * 0.2,
-                  child: const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: smallPadding),
-                      child: RecipeStripes(),
-                    ),
+                  child: Column(
+                    children: const [
+                      Expanded(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: smallPadding),
+                          child: RecipeStripes(),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

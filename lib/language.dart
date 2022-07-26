@@ -13,7 +13,7 @@ class Language extends Translations {
           'breakfasts': 'Breakfasts',
           'dinners': 'Dinners',
           'desserts': 'Desserts',
-          'popular': 'Popular',
+          'fastest': 'Fastest',
           //favorite
           'your_fav': 'Your favorite ',
           'recipess': 'recipes',
@@ -53,7 +53,7 @@ class Language extends Translations {
           'breakfasts': 'Śniadania',
           'dinners': 'Obiady',
           'desserts': 'Desery',
-          'popular': 'Popularne',
+          'fastest': 'Najszybsze',
           //favorite
           'your_fav': 'Twoje ulubione ',
           'recipess': 'przepisy',
