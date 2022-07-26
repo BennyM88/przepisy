@@ -88,7 +88,10 @@ class _RecipeGridState extends State<RecipeGrid> {
                       Positioned(
                         bottom: itemHeight / 14,
                         left: 10,
-                        child: ShowRecipeDetails(docID: docIDs[index]),
+                        child: ShowRecipeDetails(
+                          docID: docIDs[index],
+                          isBlack: true,
+                        ),
                       ),
                     ],
                   ),

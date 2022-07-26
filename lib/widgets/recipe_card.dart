@@ -89,7 +89,10 @@ class _RecipeCardState extends State<RecipeCard> {
                           ),
                         ],
                       ),
-                      ShowRecipeDetails(docID: docIDs[index]),
+                      ShowRecipeDetails(
+                        docID: docIDs[index],
+                        isBlack: true,
+                      ),
                     ],
                   ),
                 ),

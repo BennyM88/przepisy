@@ -8,6 +8,7 @@ import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/widgets/recipe_card.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
+import 'package:przepisy/widgets/recipe_stripes.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class Home extends StatefulWidget {
@@ -170,15 +171,17 @@ class _HomeState extends State<Home> {
                     style: const TextStyle(fontSize: 22),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 //list of popular recipes
                 SizedBox(
-                  height: size.height * 0.15,
-                  child: Expanded(
-                    child: Container(color: Colors.black),
+                  height: size.height * 0.2,
+                  child: const Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: smallPadding),
+                      child: RecipeStripes(),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -286,7 +289,10 @@ class CustomSearchDelegate extends SearchDelegate {
                 Positioned(
                   bottom: itemHeight / 9,
                   left: 10,
-                  child: ShowRecipeDetails(docID: docIDs[findIndex(result)]),
+                  child: ShowRecipeDetails(
+                    docID: docIDs[findIndex(result)],
+                    isBlack: true,
+                  ),
                 ),
               ],
             ),

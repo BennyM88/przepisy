@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class ShowRecipeDetails extends StatelessWidget {
   final String docID;
+  final bool isBlack;
 
-  ShowRecipeDetails({required this.docID});
+  ShowRecipeDetails({required this.docID, required this.isBlack});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +24,26 @@ class ShowRecipeDetails extends StatelessWidget {
             children: [
               Text(
                 '${data['dish name']}',
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: isBlack
+                    ? const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                    : const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
               ),
               Row(
                 children: [
-                  const Icon(Icons.timer_outlined, size: 16),
+                  Icon(
+                    Icons.timer_outlined,
+                    size: 16,
+                    color: isBlack ? Colors.black : Colors.white,
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     '${data['time']} min',
-                    style: const TextStyle(fontSize: 14),
+                    style: isBlack
+                        ? const TextStyle(fontSize: 14)
+                        : const TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ],
               ),
