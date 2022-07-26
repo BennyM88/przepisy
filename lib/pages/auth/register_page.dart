@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -16,13 +17,13 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  var snackBar = const SnackBar(
-      content: Text('Już istnieje użytkownik o podanym emailu'),
-      duration: Duration(seconds: 2),
+  var snackBar = SnackBar(
+      content: Text('email_in_use'.tr),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
-  var pswdSnackBar = const SnackBar(
-      content: Text('Podane hasła są różne'),
-      duration: Duration(seconds: 2),
+  var pswdSnackBar = SnackBar(
+      content: Text('different_pswd'.tr),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
   Future<void> signUp() async {
@@ -112,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !EmailValidator.validate(email)
-                                  ? 'Wprowadź poprawny e-mail'
+                                  ? 'incorrect_email'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -125,9 +126,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 25),
                   //password text
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
-                    child: Text('HASŁO'),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                    child: Text('pswd'.tr),
                   ),
                   const SizedBox(height: 10),
                   //password textfield
@@ -155,7 +157,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) =>
                               value != null && value.length < 6
-                                  ? 'Hasło musi mieć minimum 6 znaków'
+                                  ? 'pswd_length'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -168,9 +170,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 25),
                   //confirm password text
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
-                    child: Text('POTWIERDŹ'),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                    child: Text('confirm'.tr),
                   ),
                   const SizedBox(height: 10),
                   //confirm password textfield
@@ -198,7 +201,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) =>
                               value != null && value.length < 6
-                                  ? 'Hasło musi mieć minimum 6 znaków'
+                                  ? 'pswd_length'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -221,10 +224,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'ZAREJESTRUJ',
-                            style: TextStyle(
+                            'sign_up'.tr,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14),
@@ -239,12 +242,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     onTap: widget.showLoginPage,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'MASZ JUŻ KONTO?',
-                          style: TextStyle(fontSize: 16),
+                          'have_acc'.tr,
+                          style: const TextStyle(fontSize: 16),
                         ),
-                        Icon(Icons.arrow_right),
+                        const Icon(Icons.arrow_right),
                       ],
                     ),
                   ),

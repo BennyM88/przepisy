@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/widgets/recipe_grid.dart';
 
@@ -25,14 +26,14 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
-                    children: const [
+                    children: [
                       Text(
-                        'Twoje ulubione ',
-                        style: TextStyle(fontSize: 24),
+                        'your_fav'.tr,
+                        style: const TextStyle(fontSize: 24),
                       ),
                       Text(
-                        'przepisy',
-                        style: TextStyle(
+                        'recipess'.tr,
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ],

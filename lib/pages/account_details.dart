@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 
 class AccountDetails extends StatefulWidget {
@@ -12,22 +13,50 @@ class AccountDetails extends StatefulWidget {
 class _AccountDetailsState extends State<AccountDetails> {
   final user = FirebaseAuth.instance.currentUser!;
 
+  void changeLanguage() {
+    var localeUS = const Locale('en', 'US');
+    var localePL = const Locale('pl', 'PL');
+    if (Get.locale == const Locale('pl', 'PL')) {
+      Get.updateLocale(localeUS);
+    } else {
+      Get.updateLocale(localePL);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: changeLanguage,
+            icon: const Icon(
+              Icons.language,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //icon
-            const Center(child: Icon(Icons.person_outline_rounded, size: 100)),
+            const Center(
+                child: Icon(
+              Icons.person_outline_rounded,
+              size: 100,
+              color: Colors.black,
+            )),
             const SizedBox(height: 50),
             //email title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
-                'Adres e-mail',
+                'email_address'.tr,
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
               ),
             ),
@@ -52,7 +81,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
-                'Data założenia',
+                'creation_date'.tr,
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
               ),
             ),
@@ -92,7 +121,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                   FirebaseAuth.instance.signOut();
                 },
                 icon: const Icon(Icons.logout_rounded),
-                label: const Text('WYLOGUJ'),
+                label: Text('logout'.tr),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(

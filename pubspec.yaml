@@ -51,6 +51,9 @@ dependencies:
   firebase_auth: ^3.4.2
   google_sign_in: ^5.4.0
 
+  #state manager
+  get: ^4.6.5
+
 flutter_native_splash:
   color: "#ffffff"
   image: assets/splash.png

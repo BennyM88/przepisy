@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -13,9 +14,9 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  var snackBar = const SnackBar(
-      content: Text('Błędne dane, użytkownik nie istnieje'),
-      duration: Duration(seconds: 2),
+  var snackBar = SnackBar(
+      content: Text('incorrect_data'.tr),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
   Future<void> passwordReset() async {
@@ -65,12 +66,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   ),
                   const SizedBox(height: 20),
                   //info text
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: bigPadding),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Text(
-                      'Podaj swój e-mail, a wyślemy Ci link do zresetowania hasła',
+                      'enter_email'.tr,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   const SizedBox(height: 25),
@@ -104,7 +105,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !EmailValidator.validate(email)
-                                  ? 'Wprowadź poprawny e-mail'
+                                  ? 'incorrect_email'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -127,10 +128,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'WYŚLIJ',
-                            style: TextStyle(
+                            'send'.tr,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14),

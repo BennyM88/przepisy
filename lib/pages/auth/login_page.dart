@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/auth/forgot_pw_page.dart';
@@ -17,9 +18,9 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  var snackBar = const SnackBar(
-      content: Text('Błędne dane, użytkownik nie istnieje'),
-      duration: Duration(seconds: 2),
+  var snackBar = SnackBar(
+      content: Text('incorrect_data'.tr),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
   Future<void> signIn() async {
@@ -50,6 +51,16 @@ class _LoginPageState extends State<LoginPage> {
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+  void changeLanguage() {
+    var localeUS = const Locale('en', 'US');
+    var localePL = const Locale('pl', 'PL');
+    if (Get.locale == const Locale('pl', 'PL')) {
+      Get.updateLocale(localeUS);
+    } else {
+      Get.updateLocale(localePL);
+    }
+  }
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -61,6 +72,19 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: changeLanguage,
+            icon: const Icon(
+              Icons.language,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -108,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !EmailValidator.validate(email)
-                                  ? 'Wprowadź poprawny e-mail'
+                                  ? 'incorrect_email'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -121,9 +145,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 25),
                   //password text
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
-                    child: Text('HASŁO'),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                    child: Text('pswd'.tr),
                   ),
                   const SizedBox(height: 10),
                   //password textfield
@@ -151,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) =>
                               value != null && value.length < 6
-                                  ? 'Hasło musi mieć minimum 6 znaków'
+                                  ? 'pswd_length'.tr
                                   : null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -178,10 +203,10 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'ZALOGUJ',
-                                style: TextStyle(
+                                'sign_in'.tr,
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14),
@@ -197,9 +222,9 @@ class _LoginPageState extends State<LoginPage> {
                                     builder: (context) =>
                                         const ForgotPasswordPage()));
                           },
-                          child: const Text(
-                            'Zapomniałeś hasła?',
-                            style: TextStyle(fontSize: 14),
+                          child: Text(
+                            'forgot_pswd'.tr,
+                            style: const TextStyle(fontSize: 14),
                           ),
                         ),
                       ],
@@ -224,12 +249,12 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: widget.showRegisterPage,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'STWÓRZ NOWE KONTO',
-                          style: TextStyle(fontSize: 16),
+                          'create_acc'.tr,
+                          style: const TextStyle(fontSize: 16),
                         ),
-                        Icon(Icons.arrow_right),
+                        const Icon(Icons.arrow_right),
                       ],
                     ),
                   ),

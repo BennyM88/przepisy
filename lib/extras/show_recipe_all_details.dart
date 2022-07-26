@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ShowRecipeAllDetails extends StatelessWidget {
@@ -20,7 +21,9 @@ class ShowRecipeAllDetails extends StatelessWidget {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
           List<String> ingredients = List.from(data['ingredients']);
-          String servings = data['amount'] < 5 ? 'porcje' : 'porcji';
+          String servings = Get.locale == const Locale('pl', 'PL')
+              ? (data['amount'] < 5 ? 'porcje' : 'porcji')
+              : 'servings';
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -69,9 +72,9 @@ class ShowRecipeAllDetails extends StatelessWidget {
                     child: Column(
                       children: [
                         TabBar(
-                          tabs: const [
-                            Tab(text: 'Składniki'),
-                            Tab(text: 'Przygotowanie'),
+                          tabs: [
+                            Tab(text: 'ingredients'.tr),
+                            Tab(text: 'preparation'.tr),
                           ],
                           indicator: DotIndicator(
                             color: Colors.black,

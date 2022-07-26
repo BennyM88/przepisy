@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:przepisy/home_page.dart';
+import 'package:przepisy/language.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: Language(),
+      locale: Get.deviceLocale,
+      fallbackLocale: Locale('pl', 'PL'),
       debugShowCheckedModeBanner: false,
       home: HomePage(),
       theme: ThemeData.light().copyWith(

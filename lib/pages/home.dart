@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/widgets/recipe_card.dart';
@@ -62,14 +63,14 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
-                    children: const [
+                    children: [
                       Text(
-                        'Znajdź swój ',
-                        style: TextStyle(fontSize: 24),
+                        'find_your'.tr,
+                        style: const TextStyle(fontSize: 24),
                       ),
                       Text(
-                        'przepis',
-                        style: TextStyle(
+                        'recipe'.tr,
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -100,7 +101,7 @@ class _HomeState extends State<Home> {
                             Icon(Icons.search, color: Colors.grey.shade600),
                             const SizedBox(width: 10),
                             Text(
-                              'Szukaj...',
+                              'search'.tr,
                               style: TextStyle(
                                   color: Colors.grey.shade600, fontSize: 14),
                             ),
@@ -112,11 +113,11 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 20),
                 //titile
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: smallPadding),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
-                    'Przepisy',
-                    style: TextStyle(fontSize: 22),
+                    'recipes'.tr,
+                    style: const TextStyle(fontSize: 22),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -130,11 +131,11 @@ class _HomeState extends State<Home> {
                       children: [
                         TabBar(
                           isScrollable: true,
-                          tabs: const [
-                            Tab(text: 'Wszystkie'),
-                            Tab(text: 'Śniadania'),
-                            Tab(text: 'Obiady'),
-                            Tab(text: 'Desery'),
+                          tabs: [
+                            Tab(text: 'all'.tr),
+                            Tab(text: 'breakfasts'.tr),
+                            Tab(text: 'dinners'.tr),
+                            Tab(text: 'desserts'.tr),
                           ],
                           indicator: DotIndicator(
                             color: Colors.black,
@@ -162,11 +163,11 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 20),
                 //title
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: smallPadding),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
-                    'Popularne',
-                    style: TextStyle(fontSize: 22),
+                    'popular'.tr,
+                    style: const TextStyle(fontSize: 22),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -198,7 +199,7 @@ class CustomSearchDelegate extends SearchDelegate {
   }
 
   @override
-  String? get searchFieldLabel => 'Szukaj...';
+  String? get searchFieldLabel => 'search'.tr;
 
   @override
   List<Widget>? buildActions(BuildContext context) {

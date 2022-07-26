@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FavoriteNotLogged extends StatelessWidget {
   const FavoriteNotLogged({Key? key}) : super(key: key);
@@ -17,14 +18,15 @@ class FavoriteNotLogged extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Musisz się najpierw ',
-                style: TextStyle(fontSize: 18),
+                'you_must'.tr,
+                style: const TextStyle(fontSize: 18),
               ),
               Text(
-                'zalogować',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                'login'.tr,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
