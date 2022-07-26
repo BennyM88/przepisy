@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/constants.dart';
@@ -23,8 +21,8 @@ class _AccountDetailsState extends State<AccountDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //icon
-            Center(child: Icon(Icons.person_outline_rounded, size: 100)),
-            SizedBox(height: 50),
+            const Center(child: Icon(Icons.person_outline_rounded, size: 100)),
+            const SizedBox(height: 50),
             //email title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
@@ -33,23 +31,23 @@ class _AccountDetailsState extends State<AccountDetails> {
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             //user email
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
               child: Text(
                 user.email!,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
                 color: Colors.black,
                 thickness: 1,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             //date title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
@@ -58,7 +56,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                 style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             //user date
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: bigPadding),
@@ -66,35 +64,35 @@ class _AccountDetailsState extends State<AccountDetails> {
                 children: [
                   Text(
                     user.metadata.creationTime!.year.toString(),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  Text(
+                  const Text(
                     ' - ',
                     style: TextStyle(fontSize: 16),
                   ),
                   Text(
                     user.metadata.creationTime!.month.toString(),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
                 color: Colors.black,
                 thickness: 1,
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             //logout button
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                 },
-                icon: Icon(Icons.logout_rounded),
-                label: Text('WYLOGUJ'),
+                icon: const Icon(Icons.logout_rounded),
+                label: const Text('WYLOGUJ'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(

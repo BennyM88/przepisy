@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  var snackBar = SnackBar(
+  var snackBar = const SnackBar(
       content: Text('Błędne dane, użytkownik nie istnieje'),
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
@@ -79,26 +77,25 @@ class _LoginPageState extends State<LoginPage> {
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //email text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -113,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                               email != null && !EmailValidator.validate(email)
                                   ? 'Wprowadź poprawny e-mail'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.mail_outline, color: Colors.black),
@@ -122,26 +119,25 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   //password text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('HASŁO'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -157,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                               value != null && value.length < 6
                                   ? 'Hasło musi mieć minimum 6 znaków'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: Colors.black),
@@ -166,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //login button & forgot pswd
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
@@ -177,12 +173,12 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: signIn,
                           child: Container(
                             width: size.width * 0.4,
-                            padding: EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 'ZALOGUJ',
                                 style: TextStyle(
@@ -199,9 +195,9 @@ class _LoginPageState extends State<LoginPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        ForgotPasswordPage()));
+                                        const ForgotPasswordPage()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Zapomniałeś hasła?',
                             style: TextStyle(fontSize: 14),
                           ),
@@ -209,26 +205,26 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   GestureDetector(
                     onTap: signInWithGoogle,
                     child: Center(
                       child: Container(
                         width: 60,
                         height: 60,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.black, shape: BoxShape.circle),
                         child: Image.asset('assets/google.png'),
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //create a new acc
                   GestureDetector(
                     onTap: widget.showRegisterPage,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'STWÓRZ NOWE KONTO',
                           style: TextStyle(fontSize: 16),

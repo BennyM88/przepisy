@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -36,30 +36,31 @@ class GetRecipeAllDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   '${data['dish name']}',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 28, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Icon(Icons.timer_outlined, size: 16),
-                    SizedBox(width: 4),
+                    const Icon(Icons.timer_outlined, size: 16),
+                    const SizedBox(width: 4),
                     Text(
                       '${data['time']} min',
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
-                    SizedBox(width: 4),
-                    Text('|'),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
+                    const Text('|'),
+                    const SizedBox(width: 4),
                     Text(
                       '${data['amount']} $servings',
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Divider(color: Colors.black.withOpacity(0.5)),
                 Expanded(
                   child: DefaultTabController(
@@ -68,7 +69,7 @@ class GetRecipeAllDetails extends StatelessWidget {
                     child: Column(
                       children: [
                         TabBar(
-                          tabs: [
+                          tabs: const [
                             Tab(text: 'Składniki'),
                             Tab(text: 'Przygotowanie'),
                           ],
@@ -78,14 +79,15 @@ class GetRecipeAllDetails extends StatelessWidget {
                           ),
                           labelColor: Colors.black,
                           unselectedLabelColor: Colors.black.withOpacity(0.3),
-                          labelPadding: EdgeInsets.symmetric(horizontal: 24.0),
+                          labelPadding:
+                              const EdgeInsets.symmetric(horizontal: 24.0),
                         ),
                         Expanded(
                           child: TabBarView(children: [
                             SingleChildScrollView(
                               child: ListView.builder(
                                   shrinkWrap: true,
-                                  physics: ScrollPhysics(),
+                                  physics: const ScrollPhysics(),
                                   itemCount: ingredients.length,
                                   itemBuilder: (context, index) {
                                     return Padding(
@@ -93,7 +95,7 @@ class GetRecipeAllDetails extends StatelessWidget {
                                           vertical: 8.0),
                                       child: Text(
                                         '⚫ ${ingredients[index]}',
-                                        style: TextStyle(fontSize: 16),
+                                        style: const TextStyle(fontSize: 16),
                                       ),
                                     );
                                   }),
@@ -101,7 +103,7 @@ class GetRecipeAllDetails extends StatelessWidget {
                             SingleChildScrollView(
                               child: Text(
                                 '${data['description']}',
-                                style: TextStyle(fontSize: 16),
+                                style: const TextStyle(fontSize: 16),
                               ),
                             ),
                           ]),
@@ -114,7 +116,8 @@ class GetRecipeAllDetails extends StatelessWidget {
             ),
           );
         }
-        return Center(child: CircularProgressIndicator(color: Colors.black));
+        return const Center(
+            child: CircularProgressIndicator(color: Colors.black));
       }),
     );
   }

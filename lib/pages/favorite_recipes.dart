@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/recipe_grid.dart';
@@ -22,12 +20,12 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //title
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
-                    children: [
+                    children: const [
                       Text(
                         'Twoje ulubione ',
                         style: TextStyle(fontSize: 24),
@@ -40,7 +38,7 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //grid of fav
                 Padding(
                   padding:
@@ -48,12 +46,12 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                   child: SizedBox(
                       height: size.height * 0.75,
                       child: Column(
-                        children: [
+                        children: const [
                           Expanded(child: RecipeGrid()),
                         ],
                       )),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),

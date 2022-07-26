@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
 class FavoriteNotLogged extends StatelessWidget {
@@ -16,10 +14,10 @@ class FavoriteNotLogged extends StatelessWidget {
             size: 120,
             color: Colors.grey.shade400,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Text(
                 'Musisz się najpierw ',
                 style: TextStyle(fontSize: 18),

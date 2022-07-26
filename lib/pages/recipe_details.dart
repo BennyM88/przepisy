@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/get_recipe_all_details.dart';
@@ -18,7 +18,7 @@ class RecipeDetails extends StatelessWidget {
         minHeight: (size.height / 2),
         maxHeight: (size.height / 1.2),
         parallaxEnabled: true,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
         ),
@@ -29,7 +29,7 @@ class RecipeDetails extends StatelessWidget {
                   docID: docID,
                   width: double.infinity,
                   height: (size.height / 2) + 50),
-              Positioned(
+              const Positioned(
                 top: 40,
                 right: 20,
                 child: Icon(
@@ -43,7 +43,7 @@ class RecipeDetails extends StatelessWidget {
                 left: 20,
                 child: InkWell(
                   onTap: () => Navigator.pop(context),
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.white,
                     size: 32,

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_function_literals_in_foreach_calls
+// ignore_for_file: avoid_function_literals_in_foreach_calls
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -57,12 +57,12 @@ class _HomeState extends State<Home> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //title
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Row(
-                    children: [
+                    children: const [
                       Text(
                         'Znajdź swój ',
                         style: TextStyle(fontSize: 24),
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //search bar
                 GestureDetector(
                   onTap: () {
@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
                         child: Row(
                           children: [
                             Icon(Icons.search, color: Colors.grey.shade600),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Text(
                               'Szukaj...',
                               style: TextStyle(
@@ -110,16 +110,16 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //titile
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
                     'Przepisy',
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //list of all recipes
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                       children: [
                         TabBar(
                           isScrollable: true,
-                          tabs: [
+                          tabs: const [
                             Tab(text: 'Wszystkie'),
                             Tab(text: 'Śniadania'),
                             Tab(text: 'Obiady'),
@@ -142,8 +142,8 @@ class _HomeState extends State<Home> {
                           ),
                           labelColor: Colors.black,
                           unselectedLabelColor: Colors.black.withOpacity(0.3),
-                          labelPadding:
-                              EdgeInsets.symmetric(horizontal: smallPadding),
+                          labelPadding: const EdgeInsets.symmetric(
+                              horizontal: smallPadding),
                         ),
                         SizedBox(
                           height: size.height * 0.3,
@@ -160,16 +160,16 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //title
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: smallPadding),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: smallPadding),
                   child: Text(
                     'Popularne',
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //list of popular recipes
                 SizedBox(
                   height: size.height * 0.15,
@@ -177,7 +177,7 @@ class _HomeState extends State<Home> {
                     child: Container(color: Colors.black),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -207,7 +207,7 @@ class CustomSearchDelegate extends SearchDelegate {
         onPressed: () {
           query = '';
         },
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
       ),
     ];
   }
@@ -218,7 +218,7 @@ class CustomSearchDelegate extends SearchDelegate {
       onPressed: () {
         close(context, null);
       },
-      icon: Icon(Icons.arrow_back_rounded),
+      icon: const Icon(Icons.arrow_back_rounded),
     );
   }
 
@@ -260,7 +260,7 @@ class CustomSearchDelegate extends SearchDelegate {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade500,
-                        offset: Offset(1, 2),
+                        offset: const Offset(1, 2),
                         blurRadius: 8,
                         spreadRadius: 0.5,
                       ),
@@ -274,7 +274,7 @@ class CustomSearchDelegate extends SearchDelegate {
                       width: size.width / 2,
                       height: size.height * 0.26),
                 ),
-                Positioned(
+                const Positioned(
                   top: 10,
                   right: 10,
                   child: Icon(
@@ -316,8 +316,9 @@ class CustomSearchDelegate extends SearchDelegate {
                         RecipeDetails(docID: docIDs[findIndex(result)])));
           },
           child: ListTile(
-            title: Text(result, style: TextStyle(fontWeight: FontWeight.bold)),
-            leading: Icon(Icons.search),
+            title: Text(result,
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+            leading: const Icon(Icons.search),
           ),
         );
       },

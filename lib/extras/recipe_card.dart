@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _RecipeCardState extends State<RecipeCard> {
                               docID: docIDs[index],
                               width: size.width / 2,
                               height: size.height * 0.24),
-                          Positioned(
+                          const Positioned(
                             top: 10,
                             right: 10,
                             child: Icon(

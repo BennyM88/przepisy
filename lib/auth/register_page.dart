@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +16,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  var snackBar = SnackBar(
+  var snackBar = const SnackBar(
       content: Text('Już istnieje użytkownik o podanym emailu'),
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
-  var pswdSnackBar = SnackBar(
+  var pswdSnackBar = const SnackBar(
       content: Text('Podane hasła są różne'),
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
@@ -83,26 +81,25 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //email text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -117,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               email != null && !EmailValidator.validate(email)
                                   ? 'Wprowadź poprawny e-mail'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.mail_outline, color: Colors.black),
@@ -126,26 +123,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   //password text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('HASŁO'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -161,7 +157,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               value != null && value.length < 6
                                   ? 'Hasło musi mieć minimum 6 znaków'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: Colors.black),
@@ -170,26 +166,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   //confirm password text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('POTWIERDŹ'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //confirm password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -205,7 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               value != null && value.length < 6
                                   ? 'Hasło musi mieć minimum 6 znaków'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.lock_outline, color: Colors.black),
@@ -214,19 +209,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //register button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
                       onTap: signUp,
                       child: Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'ZAREJESTRUJ',
                             style: TextStyle(
@@ -238,13 +233,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //login page
                   GestureDetector(
                     onTap: widget.showLoginPage,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'MASZ JUŻ KONTO?',
                           style: TextStyle(fontSize: 16),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,7 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  var snackBar = SnackBar(
+  var snackBar = const SnackBar(
       content: Text('Błędne dane, użytkownik nie istnieje'),
       duration: Duration(seconds: 2),
       backgroundColor: Colors.red);
@@ -65,36 +63,35 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     child: Image.asset('assets/logo.png',
                         width: double.infinity, height: size.height * 0.1),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //info text
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: bigPadding),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Text(
                       'Podaj swój e-mail, a wyślemy Ci link do zresetowania hasła',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   //email text
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: bigPadding + 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Text('E-MAIL'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: Container(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade500,
-                            offset: Offset(1, 2),
+                            offset: const Offset(1, 2),
                             blurRadius: 8,
                             spreadRadius: 0.5,
                           ),
@@ -109,7 +106,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               email != null && !EmailValidator.validate(email)
                                   ? 'Wprowadź poprawny e-mail'
                                   : null,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             prefixIcon:
                                 Icon(Icons.mail_outline, color: Colors.black),
@@ -118,19 +115,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //reset password button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
                       onTap: passwordReset,
                       child: Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'WYŚLIJ',
                             style: TextStyle(

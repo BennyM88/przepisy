@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -23,22 +23,23 @@ class GetRecipeDetails extends StatelessWidget {
             children: [
               Text(
                 '${data['dish name']}',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
-                  Icon(Icons.timer_outlined, size: 16),
-                  SizedBox(width: 4),
+                  const Icon(Icons.timer_outlined, size: 16),
+                  const SizedBox(width: 4),
                   Text(
                     '${data['time']} min',
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14),
                   ),
                 ],
               ),
             ],
           );
         }
-        return Text('');
+        return const Text('');
       }),
     );
   }

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_function_literals_in_foreach_calls
+// ignore_for_file: avoid_function_literals_in_foreach_calls
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.shade500,
-                              offset: Offset(1, 2),
+                              offset: const Offset(1, 2),
                               blurRadius: 8,
                               spreadRadius: 0.5,
                             ),
@@ -77,7 +77,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                             width: size.width / 2,
                             height: size.height * 0.26),
                       ),
-                      Positioned(
+                      const Positioned(
                         top: 10,
                         right: 10,
                         child: Icon(
