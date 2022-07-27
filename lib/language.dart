@@ -30,6 +30,8 @@ class Language extends Translations {
           'cancel': 'Cancel',
           'yes_delete': 'Yes, delete account',
           'acc_deleted': 'The account has been deleted',
+          'version_number': 'Version ',
+          'rights': 'All rights reserved',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -79,6 +81,8 @@ class Language extends Translations {
           'cancel': 'Anuluj',
           'yes_delete': 'Tak, usuń konto',
           'acc_deleted': 'Konto zostało usunięte',
+          'version_number': 'Wersja ',
+          'rights': 'Wszelkie prawa zastrzeżone',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',

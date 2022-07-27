@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
+import 'package:przepisy/pages/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AccountDetails extends StatefulWidget {
@@ -167,9 +168,17 @@ class _AccountDetailsState extends State<AccountDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //version
-                  Text(
-                    'version'.tr,
-                    style: const TextStyle(fontSize: 18),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AboutVersion()));
+                    },
+                    child: Text(
+                      'version'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   //contact via mail

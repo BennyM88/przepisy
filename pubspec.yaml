@@ -49,6 +49,9 @@ dependencies:
   #url
   url_launcher: ^6.1.5
 
+  #versions
+  package_info_plus: ^1.4.3
+
   #firebase
   cloud_firestore: ^3.2.1
   firebase_auth: ^3.4.2
