@@ -26,13 +26,13 @@ class _RegisterPageState extends State<RegisterPage> {
       duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future<void> signUp() async {
+  Future<void> _signUp() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
-    if (passwordConfirmed()) {
+    if (_passwordConfirmed()) {
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _emailController.text.trim(),
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  bool passwordConfirmed() {
+  bool _passwordConfirmed() {
     if (_passwordController.text.trim() ==
         _confirmPasswordController.text.trim()) {
       return true;
@@ -217,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
-                      onTap: signUp,
+                      onTap: _signUp,
                       child: Container(
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(

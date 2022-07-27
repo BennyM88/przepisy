@@ -18,7 +18,7 @@ class RecipeGrid extends StatefulWidget {
 class _RecipeGridState extends State<RecipeGrid> {
   List<String> docIDs = [];
 
-  Future<void> getID() async {
+  Future<void> _getID() async {
     await FirebaseFirestore.instance.collection('przepisy-details').get().then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
@@ -35,7 +35,7 @@ class _RecipeGridState extends State<RecipeGrid> {
     final double itemWidth = size.width / 2;
     return Scaffold(
       body: FutureBuilder(
-        future: getID(),
+        future: _getID(),
         builder: (context, snapshot) {
           return GridView.builder(
             itemCount: docIDs.length,

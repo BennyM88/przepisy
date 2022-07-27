@@ -19,7 +19,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future<void> passwordReset() async {
+  Future<void> _passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
@@ -121,7 +121,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
-                      onTap: passwordReset,
+                      onTap: _passwordReset,
                       child: Container(
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(

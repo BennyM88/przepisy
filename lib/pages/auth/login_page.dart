@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
 
-  Future<void> signIn() async {
+  Future<void> _signIn() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
     final isValid = formKey.currentState!.validate();
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<void> signInWithGoogle() async {
+  Future<void> _signInWithGoogle() async {
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>['email']).signIn();
 
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  void changeLanguage() {
+  void _changeLanguage() {
     var localeUS = const Locale('en', 'US');
     var localePL = const Locale('pl', 'PL');
     if (Get.locale == const Locale('pl', 'PL')) {
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: changeLanguage,
+            onPressed: _changeLanguage,
             icon: const Icon(
               Icons.language,
               color: Colors.black,
@@ -195,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(
-                          onTap: signIn,
+                          onTap: _signIn,
                           child: Container(
                             width: size.width * 0.4,
                             padding: const EdgeInsets.all(15),
@@ -255,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: signInWithGoogle,
+                    onTap: _signInWithGoogle,
                     child: Center(
                       child: Image.asset('assets/google.png'),
                     ),

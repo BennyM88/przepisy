@@ -21,7 +21,7 @@ class RecipeCard extends StatefulWidget {
 class _RecipeCardState extends State<RecipeCard> {
   List<String> docIDs = [];
 
-  Future<void> getID() async {
+  Future<void> _getID() async {
     if (widget.category == 'w') {
       await FirebaseFirestore.instance
           .collection('przepisy-details')
@@ -53,7 +53,7 @@ class _RecipeCardState extends State<RecipeCard> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
-        future: getID(),
+        future: _getID(),
         builder: (context, snapshot) {
           return ListView.builder(
             shrinkWrap: true,

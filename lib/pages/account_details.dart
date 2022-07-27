@@ -18,7 +18,7 @@ class _AccountDetailsState extends State<AccountDetails> {
       path: 'sosodexx@gmail.com',
       query: 'subject=Support&body=How can we help you?');
 
-  void changeLanguage() {
+  void _changeLanguage() {
     var localeUS = const Locale('en', 'US');
     var localePL = const Locale('pl', 'PL');
     if (Get.locale == const Locale('pl', 'PL')) {
@@ -32,7 +32,7 @@ class _AccountDetailsState extends State<AccountDetails> {
     if (!await launchUrl(uri)) throw 'Could not launch $uri';
   }
 
-  Future<void> signOut() async {
+  Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 
@@ -44,7 +44,7 @@ class _AccountDetailsState extends State<AccountDetails> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: changeLanguage,
+            onPressed: _changeLanguage,
             icon: const Icon(
               Icons.language,
               color: Colors.black,
@@ -133,11 +133,13 @@ class _AccountDetailsState extends State<AccountDetails> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //version
                   Text(
                     'version'.tr,
                     style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 20),
+                  //contact via mail
                   GestureDetector(
                     onTap: () => _launchUrl(_mail),
                     child: Text(
@@ -146,14 +148,16 @@ class _AccountDetailsState extends State<AccountDetails> {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  //sign out
                   GestureDetector(
-                    onTap: signOut,
+                    onTap: _signOut,
                     child: Text(
                       'logout'.tr,
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),
                   const SizedBox(height: 20),
+                  //delete acc
                   Text(
                     'delete'.tr,
                     style: const TextStyle(fontSize: 18, color: Colors.red),

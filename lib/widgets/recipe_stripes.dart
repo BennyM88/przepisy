@@ -16,7 +16,7 @@ class RecipeStripes extends StatefulWidget {
 class _RecipeStripesState extends State<RecipeStripes> {
   List<String> docIDs = [];
 
-  Future<void> getID() async {
+  Future<void> _getID() async {
     await FirebaseFirestore.instance
         .collection('przepisy-details')
         .orderBy('time', descending: false)
@@ -36,7 +36,7 @@ class _RecipeStripesState extends State<RecipeStripes> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
-        future: getID(),
+        future: _getID(),
         builder: (context, snapshot) {
           return ListView.builder(
             shrinkWrap: true,
