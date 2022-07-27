@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: bigPadding + 5),
                     child: Image.asset('assets/logo.png',
-                        width: double.infinity, height: size.height * 0.1),
+                        width: double.infinity, height: size.height * 0.07),
                   ),
                   const SizedBox(height: 20),
                   //email text
