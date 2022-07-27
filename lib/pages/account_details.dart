@@ -17,6 +17,8 @@ class _AccountDetailsState extends State<AccountDetails> {
       scheme: 'mailto',
       path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
       query: 'subject=Support&body=How can we help you?');
+  var deletedSnackBar = SnackBar(
+      content: Text('acc_deleted'.tr), duration: const Duration(seconds: 3));
 
   void _changeLanguage() {
     var localeUS = const Locale('en', 'US');
@@ -48,6 +50,7 @@ class _AccountDetailsState extends State<AccountDetails> {
               onPressed: () {
                 user.delete();
                 Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(deletedSnackBar);
               },
               child: Text(
                 'yes_delete'.tr,

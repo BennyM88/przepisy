@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +16,12 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  var snackBar = SnackBar(
+  var errorSnackBar = SnackBar(
       content: Text('incorrect_data'.tr),
       duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
+  var sentSnackBar = SnackBar(
+      content: Text('check_email'.tr), duration: const Duration(seconds: 3));
 
   Future<void> _passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -29,8 +33,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
     } on FirebaseAuthException catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(errorSnackBar)
+          .closed
+          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
     }
+    ScaffoldMessenger.of(context).showSnackBar(sentSnackBar);
+    _emailController.clear();
   }
 
   @override

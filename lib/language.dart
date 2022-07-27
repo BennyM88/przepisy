@@ -29,6 +29,7 @@ class Language extends Translations {
           'are_u_sure': 'Are you sure you want to delete your account?',
           'cancel': 'Cancel',
           'yes_delete': 'Yes, delete account',
+          'acc_deleted': 'The account has been deleted',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -46,6 +47,7 @@ class Language extends Translations {
           'sign_up': 'SIGN UP',
           'have_acc': 'ALREADY HAVE AN ACCOUNT?',
           'connect_with': 'CONNECT WITH',
+          'check_email': 'Check your e-mail!',
           //details
           'ingredients': 'Ingredients',
           'preparation': 'Preparation',
@@ -76,6 +78,7 @@ class Language extends Translations {
           'are_u_sure': 'Czy jesteś pewny, że chcesz usunąć konto?',
           'cancel': 'Anuluj',
           'yes_delete': 'Tak, usuń konto',
+          'acc_deleted': 'Konto zostało usunięte',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',
@@ -93,6 +96,7 @@ class Language extends Translations {
           'sign_up': 'ZAREJESTRUJ',
           'have_acc': 'MASZ JUŻ KONTO?',
           'connect_with': 'POŁĄCZ Z',
+          'check_email': 'Sprawdź swój e-mail!',
           //details
           'ingredients': 'Składniki',
           'preparation': 'Przygotowanie',
