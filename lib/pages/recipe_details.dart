@@ -22,6 +22,7 @@ class RecipeDetails extends StatelessWidget {
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
         ),
+        //image
         body: SingleChildScrollView(
           child: Stack(
             children: [
@@ -53,6 +54,7 @@ class RecipeDetails extends StatelessWidget {
             ],
           ),
         ),
+        //description
         panel: ShowRecipeAllDetails(docID: docID),
       ),
     );

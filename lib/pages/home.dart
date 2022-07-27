@@ -176,7 +176,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                //list of popular recipes
+                //list of fastest recipes
                 SizedBox(
                   height: size.height * 0.2,
                   child: Column(

@@ -23,6 +23,10 @@ class _AccountDetailsState extends State<AccountDetails> {
     }
   }
 
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,20 +118,35 @@ class _AccountDetailsState extends State<AccountDetails> {
               ),
             ),
             const SizedBox(height: 30),
-            //logout button
-            Center(
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                icon: const Icon(Icons.logout_rounded),
-                label: Text('logout'.tr),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            //extra activities
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: bigPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'version'.tr,
+                    style: const TextStyle(fontSize: 18),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'contact'.tr,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: signOut,
+                    child: Text(
+                      'logout'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'delete'.tr,
+                    style: const TextStyle(fontSize: 18, color: Colors.red),
+                  ),
+                ],
               ),
             ),
           ],

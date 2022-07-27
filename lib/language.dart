@@ -22,7 +22,10 @@ class Language extends Translations {
           //account
           'email_address': 'E-mail address',
           'creation_date': 'Creation date',
-          'logout': 'LOGOUT',
+          'logout': 'Logout',
+          'version': 'About version',
+          'contact': 'Contact us',
+          'delete': 'Delete account',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -63,7 +66,10 @@ class Language extends Translations {
           //account
           'email_address': 'Adres e-mail',
           'creation_date': 'Data założenia',
-          'logout': 'WYLOGUJ',
+          'logout': 'Wyloguj',
+          'version': 'Informacje o wersji',
+          'contact': 'Kontakt',
+          'delete': 'Usuń konto',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',
