@@ -15,7 +15,7 @@ class _AccountDetailsState extends State<AccountDetails> {
   final user = FirebaseAuth.instance.currentUser!;
   final Uri _mail = Uri(
       scheme: 'mailto',
-      path: 'sosodexx@gmail.com',
+      path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
       query: 'subject=Support&body=How can we help you?');
 
   void _changeLanguage() {
@@ -34,6 +34,36 @@ class _AccountDetailsState extends State<AccountDetails> {
 
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
+  }
+
+  Future<void> _deleteAcc() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('delete'.tr),
+          content: Text('are_u_sure'.tr),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                user.delete();
+                Navigator.pop(context);
+              },
+              child: Text(
+                'yes_delete'.tr,
+                style: const TextStyle(color: Colors.red),
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('cancel'.tr),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -158,9 +188,12 @@ class _AccountDetailsState extends State<AccountDetails> {
                   ),
                   const SizedBox(height: 20),
                   //delete acc
-                  Text(
-                    'delete'.tr,
-                    style: const TextStyle(fontSize: 18, color: Colors.red),
+                  GestureDetector(
+                    onTap: _deleteAcc,
+                    child: Text(
+                      'delete'.tr,
+                      style: const TextStyle(fontSize: 18, color: Colors.red),
+                    ),
                   ),
                 ],
               ),

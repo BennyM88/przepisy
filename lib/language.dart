@@ -26,6 +26,9 @@ class Language extends Translations {
           'version': 'About version',
           'contact': 'Contact us',
           'delete': 'Delete account',
+          'are_u_sure': 'Are you sure you want to delete your account?',
+          'cancel': 'Cancel',
+          'yes_delete': 'Yes, delete account',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -70,6 +73,9 @@ class Language extends Translations {
           'version': 'Informacje o wersji',
           'contact': 'Kontakt',
           'delete': 'Usuń konto',
+          'are_u_sure': 'Czy jesteś pewny, że chcesz usunąć konto?',
+          'cancel': 'Anuluj',
+          'yes_delete': 'Tak, usuń konto',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',
