@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  var snackBar = SnackBar(
+  var emailSnackBar = SnackBar(
       content: Text('email_in_use'.tr),
       duration: const Duration(seconds: 2),
       backgroundColor: Colors.red);
@@ -38,10 +38,16 @@ class _RegisterPageState extends State<RegisterPage> {
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
       } on FirebaseAuthException catch (_) {
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(emailSnackBar)
+            .closed
+            .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(pswdSnackBar);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(pswdSnackBar)
+          .closed
+          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
     }
   }
 

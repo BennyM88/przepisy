@@ -34,7 +34,10 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
     } on FirebaseAuthException catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(snackBar)
+          .closed
+          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
     }
   }
 
