@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AccountDetails extends StatefulWidget {
   const AccountDetails({Key? key}) : super(key: key);
@@ -12,6 +13,10 @@ class AccountDetails extends StatefulWidget {
 
 class _AccountDetailsState extends State<AccountDetails> {
   final user = FirebaseAuth.instance.currentUser!;
+  final Uri _mail = Uri(
+      scheme: 'mailto',
+      path: 'sosodexx@gmail.com',
+      query: 'subject=Support&body=How can we help you?');
 
   void changeLanguage() {
     var localeUS = const Locale('en', 'US');
@@ -21,6 +26,10 @@ class _AccountDetailsState extends State<AccountDetails> {
     } else {
       Get.updateLocale(localePL);
     }
+  }
+
+  void _launchUrl(Uri uri) async {
+    if (!await launchUrl(uri)) throw 'Could not launch $uri';
   }
 
   Future<void> signOut() async {
@@ -129,9 +138,12 @@ class _AccountDetailsState extends State<AccountDetails> {
                     style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 20),
-                  Text(
-                    'contact'.tr,
-                    style: const TextStyle(fontSize: 18),
+                  GestureDetector(
+                    onTap: () => _launchUrl(_mail),
+                    child: Text(
+                      'contact'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(

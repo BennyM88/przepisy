@@ -46,6 +46,9 @@ dependencies:
   #register & login
   email_validator: ^2.0.1
 
+  #url
+  url_launcher: ^6.1.5
+
   #firebase
   cloud_firestore: ^3.2.1
   firebase_auth: ^3.4.2
