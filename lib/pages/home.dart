@@ -63,18 +63,22 @@ class _HomeState extends State<Home> {
                 //title
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
-                  child: Row(
-                    children: [
-                      Text(
-                        'find_your'.tr,
-                        style: const TextStyle(fontSize: 24),
-                      ),
-                      Text(
-                        'recipe'.tr,
-                        style: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: 'find_your'.tr,
+                            style: const TextStyle(
+                                fontSize: 24, color: Colors.black)),
+                        TextSpan(
+                          text: 'recipe'.tr,
+                          style: const TextStyle(
+                              fontSize: 24,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
