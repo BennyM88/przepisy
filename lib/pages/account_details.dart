@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,6 +15,7 @@ class AccountDetails extends StatefulWidget {
 
 class _AccountDetailsState extends State<AccountDetails> {
   final user = FirebaseAuth.instance.currentUser!;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
   final Uri _mail = Uri(
       scheme: 'mailto',
       path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
@@ -36,6 +38,9 @@ class _AccountDetailsState extends State<AccountDetails> {
   }
 
   Future<void> _signOut() async {
+    googleSignIn.isSignedIn().then((value) async {
+      await googleSignIn.disconnect();
+    });
     await FirebaseAuth.instance.signOut();
   }
 

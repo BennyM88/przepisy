@@ -105,7 +105,8 @@ class ShowRecipeAllDetails extends StatelessWidget {
                             ),
                             SingleChildScrollView(
                               child: Text(
-                                '${data['description']}',
+                                '${data['description']}'
+                                    .replaceAll('\\n', '\n'),
                                 style: const TextStyle(fontSize: 16),
                               ),
                             ),

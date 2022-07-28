@@ -23,7 +23,9 @@ class ShowRecipeDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${data['dish name']}',
+                '${data['dish name']}'.length > 18
+                    ? '${'${data['dish name']}'.substring(0, 18)}...'
+                    : '${data['dish name']}',
                 style: isBlack
                     ? const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
                     : const TextStyle(
