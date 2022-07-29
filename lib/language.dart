@@ -14,6 +14,7 @@ class Language extends Translations {
           'dinners': 'Dinners',
           'desserts': 'Desserts',
           'fastest': 'Fastest',
+          'other': 'Other',
           //favorite
           'your_fav': 'Your favorite ',
           'recipess': 'recipes',
@@ -65,6 +66,7 @@ class Language extends Translations {
           'dinners': 'Obiady',
           'desserts': 'Desery',
           'fastest': 'Najszybsze',
+          'other': 'Pozostałe',
           //favorite
           'your_fav': 'Twoje ulubione ',
           'recipess': 'przepisy',

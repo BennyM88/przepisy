@@ -20,7 +20,7 @@ class _RecipeStripesState extends State<RecipeStripes> {
     await FirebaseFirestore.instance
         .collection('przepisy-details')
         .orderBy('time', descending: false)
-        .limit(2)
+        .limit(5)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(

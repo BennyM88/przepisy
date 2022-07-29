@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: DefaultTabController(
-                    length: 4,
+                    length: 5,
                     initialIndex: 0,
                     child: Column(
                       children: [
@@ -141,6 +141,7 @@ class _HomeState extends State<Home> {
                             Tab(text: 'breakfasts'.tr),
                             Tab(text: 'dinners'.tr),
                             Tab(text: 'desserts'.tr),
+                            Tab(text: 'other'.tr),
                           ],
                           indicator: DotIndicator(
                             color: Colors.black,
@@ -159,6 +160,7 @@ class _HomeState extends State<Home> {
                               RecipeCard(category: 's'),
                               RecipeCard(category: 'o'),
                               RecipeCard(category: 'd'),
+                              RecipeCard(category: 'p'),
                             ],
                           ),
                         ),
