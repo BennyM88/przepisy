@@ -79,18 +79,28 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   width: double.infinity,
                   height: (size.height / 2) + 50),
               user != null
-                  ? Positioned(
-                      top: 30,
-                      right: 15,
-                      child: IconButton(
-                        onPressed: addToFav,
-                        icon: isLiked
-                            ? const Icon(Icons.favorite)
-                            : const Icon(Icons.favorite_outline),
-                        color: Colors.white,
-                        iconSize: 32,
-                      ),
-                    )
+                  ? StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection('users-favorite')
+                          .doc(user!.email)
+                          .collection('liked')
+                          .where('dish name',
+                              isEqualTo: ShowRecipeAllDetails.data['dish name'])
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        return Positioned(
+                          top: 30,
+                          right: 15,
+                          child: IconButton(
+                            onPressed: addToFav,
+                            icon: isLiked
+                                ? const Icon(Icons.favorite)
+                                : const Icon(Icons.favorite_outline),
+                            color: Colors.white,
+                            iconSize: 32,
+                          ),
+                        );
+                      })
                   : const Text(''),
               Positioned(
                 top: 40,

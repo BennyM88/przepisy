@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,7 @@ class _AccountDetailsState extends State<AccountDetails> {
       await googleSignIn.disconnect();
     });*/
     await FirebaseAuth.instance.signOut();
+    await googleSignIn.signOut();
   }
 
   Future<void> _deleteAcc() async {
@@ -56,6 +58,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             MaterialButton(
               onPressed: () {
                 user.delete();
+                googleSignIn.signOut();
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(deletedSnackBar);
               },

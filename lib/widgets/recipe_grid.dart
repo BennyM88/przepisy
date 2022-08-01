@@ -87,7 +87,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                         top: 10,
                         right: 10,
                         child: Icon(
-                          Icons.favorite_outline,
+                          Icons.favorite,
                           color: Colors.white,
                         ),
                       ),
