@@ -7,20 +7,55 @@ import 'package:przepisy/extras/show_recipe_all_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class RecipeDetails extends StatelessWidget {
+class RecipeDetails extends StatefulWidget {
   final String docID;
-  final user = FirebaseAuth.instance.currentUser;
 
   RecipeDetails({required this.docID});
+
+  @override
+  State<RecipeDetails> createState() => _RecipeDetailsState();
+}
+
+class _RecipeDetailsState extends State<RecipeDetails> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  bool isLiked = false;
 
   Future addToFav() async {
     CollectionReference collectionRef =
         FirebaseFirestore.instance.collection('users-favorite');
-    return collectionRef.doc(user!.email).collection('liked').doc(docID).set({
+    return collectionRef
+        .doc(user!.email)
+        .collection('liked')
+        .doc(widget.docID)
+        .set({
       'dish name': ShowRecipeAllDetails.data['dish name'],
       'time': ShowRecipeAllDetails.data['time'],
       'url': ShowImage.data['url'],
     }).then((value) => print('added'));
+  }
+
+  Future<bool> checkIfLiked() async {
+    try {
+      DocumentSnapshot ds = await FirebaseFirestore.instance
+          .collection('users-favorite')
+          .doc(user!.email)
+          .collection('liked')
+          .doc(widget.docID)
+          .get();
+      setState(() {
+        isLiked = ds.exists;
+      });
+      return isLiked;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  void initState() {
+    checkIfLiked();
+    super.initState();
   }
 
   @override
@@ -40,7 +75,7 @@ class RecipeDetails extends StatelessWidget {
           child: Stack(
             children: [
               ShowImage(
-                  docID: docID,
+                  docID: widget.docID,
                   width: double.infinity,
                   height: (size.height / 2) + 50),
               user != null
@@ -49,7 +84,9 @@ class RecipeDetails extends StatelessWidget {
                       right: 15,
                       child: IconButton(
                         onPressed: addToFav,
-                        icon: const Icon(Icons.favorite_outline),
+                        icon: isLiked
+                            ? const Icon(Icons.favorite)
+                            : const Icon(Icons.favorite_outline),
                         color: Colors.white,
                         iconSize: 32,
                       ),
@@ -71,7 +108,7 @@ class RecipeDetails extends StatelessWidget {
           ),
         ),
         //description
-        panel: ShowRecipeAllDetails(docID: docID),
+        panel: ShowRecipeAllDetails(docID: widget.docID),
       ),
     );
   }

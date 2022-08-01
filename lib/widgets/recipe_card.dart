@@ -73,22 +73,10 @@ class _RecipeCardState extends State<RecipeCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Stack(
-                        children: [
-                          ShowImage(
-                              docID: docIDs[index],
-                              width: size.width / 2,
-                              height: size.height * 0.24),
-                          const Positioned(
-                            top: 10,
-                            right: 10,
-                            child: Icon(
-                              Icons.favorite_outline,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      ShowImage(
+                          docID: docIDs[index],
+                          width: size.width / 2,
+                          height: size.height * 0.24),
                       ShowRecipeDetails(
                         docID: docIDs[index],
                         isBlack: true,
