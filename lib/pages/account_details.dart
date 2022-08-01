@@ -38,9 +38,10 @@ class _AccountDetailsState extends State<AccountDetails> {
   }
 
   Future<void> _signOut() async {
+    /*
     googleSignIn.isSignedIn().then((value) async {
       await googleSignIn.disconnect();
-    });
+    });*/
     await FirebaseAuth.instance.signOut();
   }
 

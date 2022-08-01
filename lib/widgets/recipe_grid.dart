@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
@@ -19,7 +20,12 @@ class _RecipeGridState extends State<RecipeGrid> {
   List<String> docIDs = [];
 
   Future<void> _getID() async {
-    await FirebaseFirestore.instance.collection('przepisy-details').get().then(
+    await FirebaseFirestore.instance
+        .collection('users-favorite')
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection('liked')
+        .get()
+        .then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
               docIDs.add(document.reference.id);

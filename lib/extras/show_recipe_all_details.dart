@@ -7,6 +7,7 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ShowRecipeAllDetails extends StatelessWidget {
   final String docID;
+  static Map<String, dynamic> data = {};
 
   ShowRecipeAllDetails({required this.docID});
 
@@ -18,8 +19,7 @@ class ShowRecipeAllDetails extends StatelessWidget {
       future: recipe.doc(docID).get(),
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
+          data = snapshot.data!.data() as Map<String, dynamic>;
           List<String> ingredients = List.from(data['ingredients']);
           String servings = Get.locale == const Locale('pl', 'PL')
               ? (data['amount'] < 5 ? 'porcje' : 'porcji')

@@ -8,6 +8,7 @@ class ShowImage extends StatelessWidget {
   final String docID;
   final double width;
   final double height;
+  static Map<String, dynamic> data = {};
 
   ShowImage({required this.docID, required this.width, required this.height});
 
@@ -19,8 +20,7 @@ class ShowImage extends StatelessWidget {
       future: przepisy.doc(docID).get(),
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
+          data = snapshot.data!.data() as Map<String, dynamic>;
           return Align(
             alignment: AlignmentDirectional.topCenter,
             child: ClipRRect(

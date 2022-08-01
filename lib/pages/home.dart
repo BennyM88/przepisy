@@ -289,14 +289,6 @@ class CustomSearchDelegate extends SearchDelegate {
                       width: size.width / 2,
                       height: size.height * 0.26),
                 ),
-                const Positioned(
-                  top: 10,
-                  right: 10,
-                  child: Icon(
-                    Icons.favorite_outline,
-                    color: Colors.white,
-                  ),
-                ),
                 Positioned(
                   bottom: itemHeight / 9,
                   left: 10,
