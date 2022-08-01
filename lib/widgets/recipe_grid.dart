@@ -18,11 +18,12 @@ class RecipeGrid extends StatefulWidget {
 
 class _RecipeGridState extends State<RecipeGrid> {
   List<String> docIDs = [];
+  final user = FirebaseAuth.instance.currentUser;
 
   Future<void> _getID() async {
     await FirebaseFirestore.instance
         .collection('users-favorite')
-        .doc(FirebaseAuth.instance.currentUser!.email)
+        .doc(user!.email)
         .collection('liked')
         .get()
         .then(
@@ -83,11 +84,19 @@ class _RecipeGridState extends State<RecipeGrid> {
                             width: size.width / 2,
                             height: size.height * 0.26),
                       ),
-                      const Positioned(
-                        top: 10,
-                        right: 10,
-                        child: Icon(
-                          Icons.favorite,
+                      Positioned(
+                        top: 5,
+                        right: 5,
+                        child: IconButton(
+                          onPressed: () {
+                            FirebaseFirestore.instance
+                                .collection('users-favorite')
+                                .doc(user!.email)
+                                .collection('liked')
+                                .doc(docIDs[index])
+                                .delete();
+                          },
+                          icon: const Icon(Icons.favorite),
                           color: Colors.white,
                         ),
                       ),
