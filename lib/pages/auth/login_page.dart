@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
     await FirebaseAuth.instance.signInWithCredential(credential);
 
     _isLoading = false;
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   void _changeLanguage() {

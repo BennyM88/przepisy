@@ -20,6 +20,9 @@ class Language extends Translations {
           'recipess': 'recipes',
           'you_must': 'You must first ',
           'login': 'log in',
+          'yes_delete_recipe': 'Yes, delete recipe',
+          'delete_recipe': 'Delete recipe',
+          'are_u_sure_recipe': 'Are you sure you want to delete this recipe?',
           //account
           'email_address': 'E-mail address',
           'creation_date': 'Creation date',
@@ -72,6 +75,10 @@ class Language extends Translations {
           'recipess': 'przepisy',
           'you_must': 'Musisz się najpierw ',
           'login': 'zalogować',
+          'yes_delete_recipe': 'Tak, usuń przepis',
+          'delete_recipe': 'Usuń przepis',
+          'are_u_sure_recipe':
+              'Czy jesteś pewny, że chcesz usunąć ten przepis?',
           //account
           'email_address': 'Adres e-mail',
           'creation_date': 'Data założenia',
