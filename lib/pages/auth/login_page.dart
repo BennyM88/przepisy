@@ -1,12 +1,13 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/auth/forgot_pw_page.dart';
 import 'package:przepisy/widgets/loading.dart';
+
+import '../../widgets/snack_bar.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -20,10 +21,6 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  var snackBar = SnackBar(
-      content: Text('incorrect_data'.tr),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.red);
   bool _isLoading = false;
 
   Future<void> _signIn() async {
@@ -34,16 +31,15 @@ class _LoginPageState extends State<LoginPage> {
 
     _isLoading = true;
     setState(() {});
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
     } on FirebaseAuthException catch (_) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(snackBar)
-          .closed
-          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+      SnackBarWidget.infoSnackBar(context, 'incorrect_data'.tr, Colors.red);
     }
+
     _isLoading = false;
     setState(() {});
   }

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/widgets/loading.dart';
 
+import '../../widgets/snack_bar.dart';
+
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
   const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
@@ -18,14 +20,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  var emailSnackBar = SnackBar(
-      content: Text('email_in_use'.tr),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.red);
-  var pswdSnackBar = SnackBar(
-      content: Text('different_pswd'.tr),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.red);
   bool _isLoading = false;
 
   Future<void> _signUp() async {
@@ -42,18 +36,14 @@ class _RegisterPageState extends State<RegisterPage> {
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
       } on FirebaseAuthException catch (_) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(emailSnackBar)
-            .closed
-            .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+        SnackBarWidget.infoSnackBar(context, 'email_in_use'.tr, Colors.red);
       }
-      _isLoading = true;
+      _isLoading = false;
       setState(() {});
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(pswdSnackBar)
-          .closed
-          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+      SnackBarWidget.infoSnackBar(context, 'different_pswd'.tr, Colors.red);
+      _isLoading = false;
+      setState(() {});
     }
   }
 

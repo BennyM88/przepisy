@@ -6,6 +6,8 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../widgets/snack_bar.dart';
+
 class AccountDetails extends StatefulWidget {
   const AccountDetails({Key? key}) : super(key: key);
 
@@ -20,8 +22,6 @@ class _AccountDetailsState extends State<AccountDetails> {
       scheme: 'mailto',
       path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
       query: 'subject=Support&body=How can we help you?');
-  var deletedSnackBar = SnackBar(
-      content: Text('acc_deleted'.tr), duration: const Duration(seconds: 3));
 
   void _changeLanguage() {
     var localeUS = const Locale('en', 'US');
@@ -55,7 +55,8 @@ class _AccountDetailsState extends State<AccountDetails> {
                 user.delete();
                 googleSignIn.signOut();
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(deletedSnackBar);
+                SnackBarWidget.infoSnackBar(
+                    context, 'acc_deleted'.tr, Colors.grey.shade800);
               },
               child: Text(
                 'yes_delete'.tr,

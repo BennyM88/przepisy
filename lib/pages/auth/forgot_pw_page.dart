@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 
+import '../../widgets/snack_bar.dart';
+
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
 
@@ -16,12 +18,6 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  var errorSnackBar = SnackBar(
-      content: Text('incorrect_data'.tr),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.red);
-  var sentSnackBar = SnackBar(
-      content: Text('check_email'.tr), duration: const Duration(seconds: 3));
 
   Future<void> _passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -33,12 +29,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
     } on FirebaseAuthException catch (_) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(errorSnackBar)
-          .closed
-          .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+      SnackBarWidget.infoSnackBar(context, 'incorrect_data'.tr, Colors.red);
     }
-    ScaffoldMessenger.of(context).showSnackBar(sentSnackBar);
+    SnackBarWidget.infoSnackBar(
+        context, 'check_email'.tr, Colors.grey.shade800);
     _emailController.clear();
   }
 
