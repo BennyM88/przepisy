@@ -35,6 +35,15 @@ class _RecipeGridState extends State<RecipeGrid> {
         );
   }
 
+  Future<void> deleteRecipe(id) async {
+    await FirebaseFirestore.instance
+        .collection('users-favorite')
+        .doc(user!.email)
+        .collection('liked')
+        .doc(id)
+        .delete();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -89,12 +98,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                         right: 5,
                         child: IconButton(
                           onPressed: () {
-                            FirebaseFirestore.instance
-                                .collection('users-favorite')
-                                .doc(user!.email)
-                                .collection('liked')
-                                .doc(docIDs[index])
-                                .delete();
+                            deleteRecipe(docIDs[index]);
                           },
                           icon: const Icon(Icons.favorite),
                           color: Colors.white,
