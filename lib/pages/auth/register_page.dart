@@ -5,6 +5,7 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/widgets/custom_button.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
+import 'package:przepisy/widgets/pswd_text_field.dart';
 
 import '../../widgets/snack_bar.dart';
 
@@ -107,43 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 10),
                         //password textfield
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: bigPadding),
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade500,
-                                  offset: const Offset(1, 2),
-                                  blurRadius: 8,
-                                  spreadRadius: 0.5,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: TextFormField(
-                                controller: _passwordController,
-                                obscureText: true,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                validator: (value) =>
-                                    value != null && value.length < 6
-                                        ? 'pswd_length'.tr
-                                        : null,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.lock_outline,
-                                      color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        pswdTextField(_passwordController),
                         const SizedBox(height: 25),
                         //confirm password text
                         Padding(
@@ -153,43 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 10),
                         //confirm password textfield
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: bigPadding),
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade500,
-                                  offset: const Offset(1, 2),
-                                  blurRadius: 8,
-                                  spreadRadius: 0.5,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: TextFormField(
-                                controller: _confirmPasswordController,
-                                obscureText: true,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                validator: (value) =>
-                                    value != null && value.length < 6
-                                        ? 'pswd_length'.tr
-                                        : null,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.lock_outline,
-                                      color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        pswdTextField(_confirmPasswordController),
                         const SizedBox(height: 50),
                         //register button
                         Padding(
