@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:przepisy/extras/show_recipe_all_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
@@ -36,7 +37,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
         'time': ShowRecipeAllDetails.data['time'],
         'url': ShowImage.data['url'],
       }).then((_) => SnackBarWidget.infoSnackBar(
-              context, 'Dodano do ulubionych', Colors.grey.shade800));
+              context, 'added_fav'.tr, Colors.grey.shade800));
     } else {
       return collectionRef
           .doc(user!.email)
@@ -44,7 +45,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
           .doc(widget.docID)
           .delete()
           .then((value) => SnackBarWidget.infoSnackBar(
-              context, 'Usunieto z ulubionych', Colors.grey.shade800));
+              context, 'removed_fav'.tr, Colors.grey.shade800));
     }
   }
 

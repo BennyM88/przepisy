@@ -8,6 +8,7 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/recipe_details.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 import '../extras/show_recipe_details.dart';
 
 class RecipeGrid extends StatefulWidget {
@@ -58,7 +59,9 @@ class _RecipeGridState extends State<RecipeGrid> {
                     .doc(_user!.email)
                     .collection('liked')
                     .doc(id)
-                    .delete();
+                    .delete()
+                    .then((value) => SnackBarWidget.infoSnackBar(
+                        context, 'removed_fav'.tr, Colors.grey.shade800));
                 Navigator.pop(context);
               },
               child: Text(

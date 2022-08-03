@@ -57,6 +57,8 @@ class Language extends Translations {
           //details
           'ingredients': 'Ingredients',
           'preparation': 'Preparation',
+          'added_fav': 'Added to favorites',
+          'removed_fav': 'Removed from favorites',
         },
         'pl_PL': {
           //home
@@ -113,6 +115,8 @@ class Language extends Translations {
           //details
           'ingredients': 'Składniki',
           'preparation': 'Przygotowanie',
+          'added_fav': 'Dodano do ulubionych',
+          'removed_fav': 'Usunięto z ulubionych',
         }
       };
 }
