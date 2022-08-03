@@ -100,18 +100,6 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                           .doc(widget.docID)
                           .snapshots(),
                       builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return Positioned(
-                            top: 30,
-                            right: 15,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.favorite_outline),
-                              color: Colors.white,
-                              iconSize: 32,
-                            ),
-                          );
-                        }
                         if (snapshot.data?.exists ?? false) {
                           return Positioned(
                             top: 30,
