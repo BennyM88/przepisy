@@ -19,7 +19,14 @@ class RecipeCard extends StatefulWidget {
 }
 
 class _RecipeCardState extends State<RecipeCard> {
+  late Future<void> _dataFuture;
   final List<String> _docIDs = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _dataFuture = _getID();
+  }
 
   Future<void> _getID() async {
     if (widget.category == 'w') {
@@ -53,7 +60,7 @@ class _RecipeCardState extends State<RecipeCard> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
-        future: _getID(),
+        future: _dataFuture,
         builder: (context, snapshot) {
           return ListView.builder(
             shrinkWrap: true,
