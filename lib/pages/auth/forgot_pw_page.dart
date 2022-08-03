@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
+import 'package:przepisy/widgets/custom_button.dart';
 
 import '../../widgets/snack_bar.dart';
 
@@ -125,22 +126,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     padding: const EdgeInsets.symmetric(horizontal: bigPadding),
                     child: GestureDetector(
                       onTap: _passwordReset,
-                      child: Container(
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'send'.tr,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14),
-                          ),
-                        ),
-                      ),
+                      child: customButton('send'.tr),
                     ),
                   ),
                 ],
