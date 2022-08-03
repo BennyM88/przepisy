@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/show_recipe_all_details.dart';
 import 'package:przepisy/extras/show_image.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class RecipeDetails extends StatefulWidget {
@@ -19,23 +20,35 @@ class RecipeDetails extends StatefulWidget {
 class _RecipeDetailsState extends State<RecipeDetails> {
   final user = FirebaseAuth.instance.currentUser;
 
-  bool isLiked = false;
+  //bool _isLiked = false;
 
-  Future addToFav() async {
+  Future<dynamic> addToFav(bool isLiked) async {
+    isLiked = !isLiked;
     CollectionReference collectionRef =
         FirebaseFirestore.instance.collection('users-favorite');
-    return collectionRef
-        .doc(user!.email)
-        .collection('liked')
-        .doc(widget.docID)
-        .set({
-      'dish name': ShowRecipeAllDetails.data['dish name'],
-      'time': ShowRecipeAllDetails.data['time'],
-      'url': ShowImage.data['url'],
-    }).then((value) => print('added'));
+    if (isLiked) {
+      return collectionRef
+          .doc(user!.email)
+          .collection('liked')
+          .doc(widget.docID)
+          .set({
+        'dish name': ShowRecipeAllDetails.data['dish name'],
+        'time': ShowRecipeAllDetails.data['time'],
+        'url': ShowImage.data['url'],
+      }).then((_) => SnackBarWidget.infoSnackBar(
+              context, 'Dodano do ulubionych', Colors.grey.shade800));
+    } else {
+      return collectionRef
+          .doc(user!.email)
+          .collection('liked')
+          .doc(widget.docID)
+          .delete()
+          .then((value) => SnackBarWidget.infoSnackBar(
+              context, 'Usunieto z ulubionych', Colors.grey.shade800));
+    }
   }
 
-  Future<bool> checkIfLiked() async {
+  /*Future<bool> checkIfLiked() async {
     try {
       DocumentSnapshot ds = await FirebaseFirestore.instance
           .collection('users-favorite')
@@ -44,17 +57,17 @@ class _RecipeDetailsState extends State<RecipeDetails> {
           .doc(widget.docID)
           .get();
       setState(() {
-        isLiked = ds.exists;
+        _isLiked = ds.exists;
       });
-      return isLiked;
+      return _isLiked;
     } catch (e) {
       return false;
     }
-  }
+  }*/
 
   @override
   void initState() {
-    checkIfLiked();
+    //checkIfLiked();
     super.initState();
   }
 
@@ -79,28 +92,67 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   width: double.infinity,
                   height: (size.height / 2) + 50),
               user != null
-                  ? StreamBuilder(
+                  ? StreamBuilder<DocumentSnapshot>(
                       stream: FirebaseFirestore.instance
                           .collection('users-favorite')
                           .doc(user!.email)
                           .collection('liked')
-                          .where('dish name',
-                              isEqualTo: ShowRecipeAllDetails.data['dish name'])
+                          .doc(widget.docID)
                           .snapshots(),
                       builder: (context, snapshot) {
-                        return Positioned(
+                        if (!snapshot.hasData) {
+                          return Positioned(
+                            top: 30,
+                            right: 15,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_outline),
+                              color: Colors.white,
+                              iconSize: 32,
+                            ),
+                          );
+                        }
+                        if (snapshot.data?.exists ?? false) {
+                          return Positioned(
+                            top: 30,
+                            right: 15,
+                            child: IconButton(
+                              onPressed: () {
+                                addToFav(true);
+                              },
+                              icon: const Icon(Icons.favorite),
+                              color: Colors.white,
+                              iconSize: 32,
+                            ),
+                          );
+                        } else {
+                          return Positioned(
+                            top: 30,
+                            right: 15,
+                            child: IconButton(
+                              onPressed: () {
+                                addToFav(false);
+                              },
+                              icon: const Icon(Icons.favorite_outline),
+                              color: Colors.white,
+                              iconSize: 32,
+                            ),
+                          );
+                        }
+                        /*return Positioned(
                           top: 30,
                           right: 15,
                           child: IconButton(
                             onPressed: addToFav,
-                            icon: isLiked
+                            icon: (snapshot.data?.exists ?? false) && _isLiked
                                 ? const Icon(Icons.favorite)
                                 : const Icon(Icons.favorite_outline),
                             color: Colors.white,
                             iconSize: 32,
                           ),
-                        );
-                      })
+                        );*/
+                      },
+                    )
                   : const Text(''),
               Positioned(
                 top: 40,

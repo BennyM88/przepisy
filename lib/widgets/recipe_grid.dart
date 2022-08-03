@@ -154,7 +154,7 @@ class _RecipeGridState extends State<RecipeGrid> {
               },
             );
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),
