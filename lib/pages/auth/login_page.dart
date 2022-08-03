@@ -1,10 +1,10 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/auth/forgot_pw_page.dart';
+import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 
 import '../../widgets/snack_bar.dart';
@@ -125,42 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 10),
                         //email textfield
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: bigPadding),
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade500,
-                                  offset: const Offset(1, 2),
-                                  blurRadius: 8,
-                                  spreadRadius: 0.5,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: TextFormField(
-                                controller: _emailController,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                validator: (email) => email != null &&
-                                        !EmailValidator.validate(email)
-                                    ? 'incorrect_email'.tr
-                                    : null,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.mail_outline,
-                                      color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        emailTextField(_emailController),
                         const SizedBox(height: 25),
                         //password text
                         Padding(

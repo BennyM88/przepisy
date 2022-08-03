@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:przepisy/constants.dart';
 
 Widget customButton(String text) {
   return Container(
