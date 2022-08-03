@@ -33,7 +33,7 @@ class _AboutVersionState extends State<AboutVersion> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

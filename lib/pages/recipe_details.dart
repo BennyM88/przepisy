@@ -18,11 +18,11 @@ class RecipeDetails extends StatefulWidget {
 }
 
 class _RecipeDetailsState extends State<RecipeDetails> {
-  final user = FirebaseAuth.instance.currentUser;
+  final User? user = FirebaseAuth.instance.currentUser;
 
   //bool _isLiked = false;
 
-  Future<dynamic> addToFav(bool isLiked) async {
+  Future<dynamic> _addToFav(bool isLiked) async {
     isLiked = !isLiked;
     CollectionReference collectionRef =
         FirebaseFirestore.instance.collection('users-favorite');
@@ -73,7 +73,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SlidingUpPanel(
         minHeight: (size.height / 2),
@@ -118,7 +118,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                             right: 15,
                             child: IconButton(
                               onPressed: () {
-                                addToFav(true);
+                                _addToFav(true);
                               },
                               icon: const Icon(Icons.favorite),
                               color: Colors.white,
@@ -131,7 +131,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                             right: 15,
                             child: IconButton(
                               onPressed: () {
-                                addToFav(false);
+                                _addToFav(false);
                               },
                               icon: const Icon(Icons.favorite_outline),
                               color: Colors.white,

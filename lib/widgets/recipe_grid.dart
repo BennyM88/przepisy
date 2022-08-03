@@ -18,32 +18,32 @@ class RecipeGrid extends StatefulWidget {
 }
 
 class _RecipeGridState extends State<RecipeGrid> {
-  late Future<void> dataFuture;
-  List<String> docIDs = [];
-  final user = FirebaseAuth.instance.currentUser;
+  late Future<void> _dataFuture;
+  final List<String> _docIDs = [];
+  final User? _user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
     super.initState();
-    dataFuture = _getID();
+    _dataFuture = _getID();
   }
 
   Future<void> _getID() async {
     await FirebaseFirestore.instance
         .collection('users-favorite')
-        .doc(user!.email)
+        .doc(_user!.email)
         .collection('liked')
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
-              docIDs.add(document.reference.id);
+              _docIDs.add(document.reference.id);
             },
           ),
         );
   }
 
-  Future<void> deleteRecipe(id) async {
+  Future<void> _deleteRecipe(id) async {
     await showDialog(
       context: context,
       builder: (context) {
@@ -55,7 +55,7 @@ class _RecipeGridState extends State<RecipeGrid> {
               onPressed: () {
                 FirebaseFirestore.instance
                     .collection('users-favorite')
-                    .doc(user!.email)
+                    .doc(_user!.email)
                     .collection('liked')
                     .doc(id)
                     .delete();
@@ -80,16 +80,16 @@ class _RecipeGridState extends State<RecipeGrid> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 96) / 2;
     final double itemWidth = size.width / 2;
     return Scaffold(
       body: FutureBuilder(
-        future: dataFuture,
+        future: _dataFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return GridView.builder(
-              itemCount: docIDs.length,
+              itemCount: _docIDs.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: itemWidth / itemHeight),
               itemBuilder: (context, index) {
@@ -99,7 +99,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                RecipeDetails(docID: docIDs[index])));
+                                RecipeDetails(docID: _docIDs[index])));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(smallPadding / 2),
@@ -124,7 +124,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                         Padding(
                           padding: const EdgeInsets.all(4),
                           child: ShowImage(
-                              docID: docIDs[index],
+                              docID: _docIDs[index],
                               width: size.width / 2,
                               height: size.height * 0.26),
                         ),
@@ -133,7 +133,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                           right: 5,
                           child: IconButton(
                             onPressed: () {
-                              deleteRecipe(docIDs[index]);
+                              _deleteRecipe(_docIDs[index]);
                             },
                             icon: const Icon(Icons.favorite),
                             color: Colors.white,
@@ -143,7 +143,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                           bottom: itemHeight / 14,
                           left: 10,
                           child: ShowRecipeDetails(
-                            docID: docIDs[index],
+                            docID: _docIDs[index],
                             isBlack: true,
                           ),
                         ),

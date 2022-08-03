@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _signIn() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
-    final isValid = formKey.currentState!.validate();
+    final bool isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
     _isLoading = true;
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

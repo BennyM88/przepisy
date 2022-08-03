@@ -14,7 +14,7 @@ class RecipeStripes extends StatefulWidget {
 }
 
 class _RecipeStripesState extends State<RecipeStripes> {
-  List<String> docIDs = [];
+  final List<String> _docIDs = [];
 
   Future<void> _getID() async {
     await FirebaseFirestore.instance
@@ -25,7 +25,7 @@ class _RecipeStripesState extends State<RecipeStripes> {
         .then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
-              docIDs.add(document.reference.id);
+              _docIDs.add(document.reference.id);
             },
           ),
         );
@@ -33,14 +33,14 @@ class _RecipeStripesState extends State<RecipeStripes> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
         future: _getID(),
         builder: (context, snapshot) {
           return ListView.builder(
             shrinkWrap: true,
-            itemCount: docIDs.length,
+            itemCount: _docIDs.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -48,21 +48,21 @@ class _RecipeStripesState extends State<RecipeStripes> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              RecipeDetails(docID: docIDs[index])));
+                              RecipeDetails(docID: _docIDs[index])));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Stack(
                     children: [
                       ShowImage(
-                          docID: docIDs[index],
+                          docID: _docIDs[index],
                           width: size.width,
                           height: size.height * 0.12),
                       Positioned(
                           top: 10,
                           left: 10,
                           child: ShowRecipeDetails(
-                            docID: docIDs[index],
+                            docID: _docIDs[index],
                             isBlack: false,
                           )),
                     ],

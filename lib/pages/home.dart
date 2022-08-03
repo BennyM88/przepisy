@@ -19,8 +19,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> data = [];
-  List<String> doc = [];
+  List<String> _data = [];
+  final List<String> _doc = [];
 
   CollectionReference recipe =
       FirebaseFirestore.instance.collection('przepisy-details');
@@ -28,15 +28,15 @@ class _HomeState extends State<Home> {
   Future<void> _getData() async {
     QuerySnapshot querySnapshot = await recipe.get();
 
-    final allDishNames =
+    final List<dynamic> allDishNames =
         querySnapshot.docs.map((doc) => doc.get('dish name')).toList();
 
-    data = allDishNames.map((e) => e.toString()).toList();
+    _data = allDishNames.map((e) => e.toString()).toList();
 
     recipe.get().then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
-              doc.add(document.reference.id);
+              _doc.add(document.reference.id);
             },
           ),
         );
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -87,8 +87,8 @@ class _HomeState extends State<Home> {
                   onTap: () {
                     showSearch(
                       context: context,
-                      delegate:
-                          CustomSearchDelegate(searchTerms: data, docIDs: doc),
+                      delegate: CustomSearchDelegate(
+                          searchTerms: _data, docIDs: _doc),
                     );
                   },
                   child: Padding(
@@ -207,7 +207,7 @@ class CustomSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [];
   List<String> docIDs = [];
 
-  int findIndex(var item) {
+  int _findIndex(var item) {
     int index = searchTerms.indexWhere((element) => element.contains(item));
     return index;
   }
@@ -240,7 +240,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List<String> matchQuery = [];
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 96) / 2;
     final double itemWidth = size.width / 2;
     for (var x in searchTerms) {
@@ -260,7 +260,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        RecipeDetails(docID: docIDs[findIndex(result)])));
+                        RecipeDetails(docID: docIDs[_findIndex(result)])));
           },
           child: Padding(
             padding: const EdgeInsets.all(smallPadding / 2),
@@ -285,7 +285,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 Padding(
                   padding: const EdgeInsets.all(4),
                   child: ShowImage(
-                      docID: docIDs[findIndex(result)],
+                      docID: docIDs[_findIndex(result)],
                       width: size.width / 2,
                       height: size.height * 0.26),
                 ),
@@ -293,7 +293,7 @@ class CustomSearchDelegate extends SearchDelegate {
                   bottom: itemHeight / 9,
                   left: 10,
                   child: ShowRecipeDetails(
-                    docID: docIDs[findIndex(result)],
+                    docID: docIDs[_findIndex(result)],
                     isBlack: true,
                   ),
                 ),
@@ -323,7 +323,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        RecipeDetails(docID: docIDs[findIndex(result)])));
+                        RecipeDetails(docID: docIDs[_findIndex(result)])));
           },
           child: ListTile(
             title: Text(result,

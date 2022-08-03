@@ -13,7 +13,7 @@ class FavoriteRecipes extends StatefulWidget {
 class _FavoriteRecipesState extends State<FavoriteRecipes> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SizedBox(

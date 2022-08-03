@@ -19,7 +19,7 @@ class RecipeCard extends StatefulWidget {
 }
 
 class _RecipeCardState extends State<RecipeCard> {
-  List<String> docIDs = [];
+  final List<String> _docIDs = [];
 
   Future<void> _getID() async {
     if (widget.category == 'w') {
@@ -29,7 +29,7 @@ class _RecipeCardState extends State<RecipeCard> {
           .then(
             (snapshot) => snapshot.docs.forEach(
               (document) {
-                docIDs.add(document.reference.id);
+                _docIDs.add(document.reference.id);
               },
             ),
           );
@@ -41,7 +41,7 @@ class _RecipeCardState extends State<RecipeCard> {
           .then(
             (snapshot) => snapshot.docs.forEach(
               (document) {
-                docIDs.add(document.reference.id);
+                _docIDs.add(document.reference.id);
               },
             ),
           );
@@ -50,7 +50,7 @@ class _RecipeCardState extends State<RecipeCard> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder(
         future: _getID(),
@@ -58,7 +58,7 @@ class _RecipeCardState extends State<RecipeCard> {
           return ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: docIDs.length,
+            itemCount: _docIDs.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -66,7 +66,7 @@ class _RecipeCardState extends State<RecipeCard> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              RecipeDetails(docID: docIDs[index])));
+                              RecipeDetails(docID: _docIDs[index])));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -74,11 +74,11 @@ class _RecipeCardState extends State<RecipeCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ShowImage(
-                          docID: docIDs[index],
+                          docID: _docIDs[index],
                           width: size.width / 2,
                           height: size.height * 0.24),
                       ShowRecipeDetails(
-                        docID: docIDs[index],
+                        docID: _docIDs[index],
                         isBlack: true,
                       ),
                     ],

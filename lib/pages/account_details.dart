@@ -16,7 +16,7 @@ class AccountDetails extends StatefulWidget {
 }
 
 class _AccountDetailsState extends State<AccountDetails> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final User user = FirebaseAuth.instance.currentUser!;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final Uri _mail = Uri(
       scheme: 'mailto',

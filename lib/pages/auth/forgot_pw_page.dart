@@ -23,7 +23,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Future<void> _passwordReset() async {
     FocusManager.instance.primaryFocus?.unfocus();
 
-    final isValid = formKey.currentState!.validate();
+    final bool isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
     try {
@@ -45,7 +45,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
