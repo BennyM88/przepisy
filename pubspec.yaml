@@ -42,7 +42,6 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   cached_network_image: ^3.2.1
   lottie: ^1.4.1
-  flutter_native_splash: ^2.2.7
 
   #register & login
   email_validator: ^2.0.1
@@ -60,9 +59,6 @@ dependencies:
 
   #state manager
   get: ^4.6.5
-
-flutter_native_splash:
-  color: "#ffffff"
 
 dev_dependencies:
   flutter_test:
