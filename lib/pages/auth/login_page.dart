@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
+import 'package:przepisy/pages/account.dart';
 import 'package:przepisy/pages/auth/forgot_pw_page.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 import 'package:przepisy/widgets/pswd_text_field.dart';
 
+import '../../transitions/enter_exit_route.dart';
 import '../../widgets/snack_bar.dart';
 
 class LoginPage extends StatefulWidget {
@@ -169,8 +171,9 @@ class _LoginPageState extends State<LoginPage> {
                                 onTap: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
+                                      EnterExitRoute(
+                                          exitPage: const Account(),
+                                          enterPage:
                                               const ForgotPasswordPage()));
                                 },
                                 child: Text(

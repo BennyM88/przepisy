@@ -7,7 +7,9 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../transitions/enter_exit_route.dart';
 import '../widgets/snack_bar.dart';
+import 'account.dart';
 
 class AccountDetails extends StatefulWidget {
   const AccountDetails({Key? key}) : super(key: key);
@@ -190,8 +192,9 @@ class _AccountDetailsState extends State<AccountDetails> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const AboutVersion()));
+                          EnterExitRoute(
+                              exitPage: const Account(),
+                              enterPage: const AboutVersion()));
                     },
                     child: Text(
                       'version'.tr,
