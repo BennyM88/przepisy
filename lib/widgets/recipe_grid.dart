@@ -44,6 +44,13 @@ class _RecipeGridState extends State<RecipeGrid> {
         );
   }
 
+  Future<void> _refreshRecipes(BuildContext context) async {
+    setState(() {
+      _docIDs.clear();
+      _dataFuture = _getID();
+    });
+  }
+
   Future<void> _deleteRecipe(id) async {
     await showDialog(
       context: context,
@@ -62,6 +69,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                     .delete()
                     .whenComplete(() => SnackBarWidget.infoSnackBar(
                         context, 'removed_fav'.tr, Colors.grey.shade800));
+                _refreshRecipes(context);
                 Navigator.pop(context);
               },
               child: Text(
