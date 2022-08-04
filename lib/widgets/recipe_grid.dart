@@ -60,7 +60,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                     .collection('liked')
                     .doc(id)
                     .delete()
-                    .then((value) => SnackBarWidget.infoSnackBar(
+                    .whenComplete(() => SnackBarWidget.infoSnackBar(
                         context, 'removed_fav'.tr, Colors.grey.shade800));
                 Navigator.pop(context);
               },

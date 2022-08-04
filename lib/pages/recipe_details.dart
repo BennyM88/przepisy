@@ -21,8 +21,6 @@ class RecipeDetails extends StatefulWidget {
 class _RecipeDetailsState extends State<RecipeDetails> {
   final User? user = FirebaseAuth.instance.currentUser;
 
-  //bool _isLiked = false;
-
   Future<dynamic> _addToFav(bool isLiked) async {
     isLiked = !isLiked;
     CollectionReference collectionRef =
@@ -36,7 +34,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
         'dish name': ShowRecipeAllDetails.data['dish name'],
         'time': ShowRecipeAllDetails.data['time'],
         'url': ShowImage.data['url'],
-      }).then((_) => SnackBarWidget.infoSnackBar(
+      }).whenComplete(() => SnackBarWidget.infoSnackBar(
               context, 'added_fav'.tr, Colors.grey.shade800));
     } else {
       return collectionRef
@@ -44,7 +42,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
           .collection('liked')
           .doc(widget.docID)
           .delete()
-          .then((value) => SnackBarWidget.infoSnackBar(
+          .whenComplete(() => SnackBarWidget.infoSnackBar(
               context, 'removed_fav'.tr, Colors.grey.shade800));
     }
   }
