@@ -38,10 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
   curved_navigation_bar: ^1.0.3
-  flutter_native_splash: ^2.2.4
   tab_indicator_styler: ^2.0.0
   sliding_up_panel: ^2.0.0+1
   cached_network_image: ^3.2.1
+  lottie: ^1.4.1
 
   #register & login
   email_validator: ^2.0.1
@@ -59,10 +59,6 @@ dependencies:
 
   #state manager
   get: ^4.6.5
-
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/splash.png
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +86,7 @@ flutter:
   assets:
     - assets/logo.png
     - assets/google.png
+    - assets/splashScreen.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

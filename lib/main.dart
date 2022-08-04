@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:przepisy/home_page.dart';
 import 'package:przepisy/language.dart';
 import 'package:flutter/services.dart';
+import 'package:przepisy/splash_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: Locale('pl', 'PL'),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashScreen(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme)
