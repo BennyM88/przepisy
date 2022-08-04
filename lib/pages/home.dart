@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
                 const SizedBox(height: 10),
                 //list of fastest recipes
                 SizedBox(
-                  height: size.height * 0.2,
+                  height: size.height * 0.21,
                   child: Column(
                     children: const [
                       Expanded(

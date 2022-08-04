@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,18 @@ class _AccountDetailsState extends State<AccountDetails> {
   }
 
   Future<void> _deleteAcc() async {
+    /*await FirebaseFirestore.instance
+        .collection('users-favorite')
+        .doc(user.email)
+        .delete()
+        .whenComplete(() => print('usunieto'));*/
+
+    await user.delete().whenComplete(() => SnackBarWidget.infoSnackBar(
+        context, 'acc_deleted'.tr, Colors.grey.shade800));
+    await googleSignIn.signOut();
+  }
+
+  Future<void> _deleteAccDialog() async {
     showDialog(
       context: context,
       builder: (context) {
@@ -52,11 +65,8 @@ class _AccountDetailsState extends State<AccountDetails> {
           actions: [
             MaterialButton(
               onPressed: () {
-                user.delete();
-                googleSignIn.signOut();
+                _deleteAcc();
                 Navigator.pop(context);
-                SnackBarWidget.infoSnackBar(
-                    context, 'acc_deleted'.tr, Colors.grey.shade800);
               },
               child: Text(
                 'yes_delete'.tr,
@@ -206,7 +216,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                   const SizedBox(height: 20),
                   //delete acc
                   GestureDetector(
-                    onTap: _deleteAcc,
+                    onTap: _deleteAccDialog,
                     child: Text(
                       'delete'.tr,
                       style: const TextStyle(fontSize: 18, color: Colors.red),
