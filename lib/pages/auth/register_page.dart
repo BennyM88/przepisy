@@ -41,7 +41,9 @@ class _RegisterPageState extends State<RegisterPage> {
         SnackBarWidget.infoSnackBar(context, 'email_in_use'.tr, Colors.red);
       }
       _isLoading = false;
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     } else {
       SnackBarWidget.infoSnackBar(context, 'different_pswd'.tr, Colors.red);
       _isLoading = false;

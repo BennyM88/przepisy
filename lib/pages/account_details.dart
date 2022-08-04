@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,11 +44,14 @@ class _AccountDetailsState extends State<AccountDetails> {
   }
 
   Future<void> _deleteAcc() async {
-    /*await FirebaseFirestore.instance
+    var collection = FirebaseFirestore.instance
         .collection('users-favorite')
         .doc(user.email)
-        .delete()
-        .whenComplete(() => print('usunieto'));*/
+        .collection('liked');
+    var snapshots = await collection.get();
+    for (var doc in snapshots.docs) {
+      await doc.reference.delete();
+    }
 
     await user.delete().whenComplete(() => SnackBarWidget.infoSnackBar(
         context, 'acc_deleted'.tr, Colors.grey.shade800));

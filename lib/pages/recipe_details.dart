@@ -47,29 +47,6 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     }
   }
 
-  /*Future<bool> checkIfLiked() async {
-    try {
-      DocumentSnapshot ds = await FirebaseFirestore.instance
-          .collection('users-favorite')
-          .doc(user!.email)
-          .collection('liked')
-          .doc(widget.docID)
-          .get();
-      setState(() {
-        _isLiked = ds.exists;
-      });
-      return _isLiked;
-    } catch (e) {
-      return false;
-    }
-  }*/
-
-  @override
-  void initState() {
-    //checkIfLiked();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
