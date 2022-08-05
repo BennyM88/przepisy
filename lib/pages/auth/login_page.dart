@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
+import 'package:przepisy/extras/country.dart';
 import 'package:przepisy/pages/account.dart';
 import 'package:przepisy/pages/auth/forgot_pw_page.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
@@ -66,12 +67,12 @@ class _LoginPageState extends State<LoginPage> {
     if (mounted) setState(() {});
   }
 
-  void _changeLanguage() {
+  void _changeLanguage(Country country) {
     var localeUS = const Locale('en', 'US');
     var localePL = const Locale('pl', 'PL');
-    if (Get.locale == const Locale('pl', 'PL')) {
+    if (country.countryCode == 'US') {
       Get.updateLocale(localeUS);
-    } else {
+    } else if (country.countryCode == 'PL') {
       Get.updateLocale(localePL);
     }
   }
@@ -91,11 +92,27 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: _changeLanguage,
-            icon: const Icon(
-              Icons.language,
-              color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton(
+              icon: const Icon(
+                Icons.language,
+                color: Colors.black,
+              ),
+              underline: const SizedBox(),
+              items: Country.languageList()
+                  .map<DropdownMenuItem<Country>>((lang) => DropdownMenuItem(
+                      value: lang,
+                      child: Row(
+                        children: [
+                          Text(lang.flag),
+                          Text(lang.name),
+                        ],
+                      )))
+                  .toList(),
+              onChanged: (Country? country) {
+                _changeLanguage(country!);
+              },
             ),
           ),
         ],

@@ -7,6 +7,7 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../extras/country.dart';
 import '../transitions/enter_exit_route.dart';
 import '../widgets/snack_bar.dart';
 import 'account.dart';
@@ -26,12 +27,12 @@ class _AccountDetailsState extends State<AccountDetails> {
       path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
       query: 'subject=Support&body=How can we help you?');
 
-  void _changeLanguage() {
+  void _changeLanguage(Country country) {
     var localeUS = const Locale('en', 'US');
     var localePL = const Locale('pl', 'PL');
-    if (Get.locale == const Locale('pl', 'PL')) {
+    if (country.countryCode == 'US') {
       Get.updateLocale(localeUS);
-    } else {
+    } else if (country.countryCode == 'PL') {
       Get.updateLocale(localePL);
     }
   }
@@ -97,11 +98,27 @@ class _AccountDetailsState extends State<AccountDetails> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: _changeLanguage,
-            icon: const Icon(
-              Icons.language,
-              color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton(
+              icon: const Icon(
+                Icons.language,
+                color: Colors.black,
+              ),
+              underline: const SizedBox(),
+              items: Country.languageList()
+                  .map<DropdownMenuItem<Country>>((lang) => DropdownMenuItem(
+                      value: lang,
+                      child: Row(
+                        children: [
+                          Text(lang.flag),
+                          Text(lang.name),
+                        ],
+                      )))
+                  .toList(),
+              onChanged: (Country? country) {
+                _changeLanguage(country!);
+              },
             ),
           ),
         ],
