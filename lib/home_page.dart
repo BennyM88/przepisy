@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:animations/animations.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/pages/account.dart';
@@ -31,7 +32,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedPage],
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
+        child: _pages[_selectedPage],
+      ),
       bottomNavigationBar: CurvedNavigationBar(
           color: Colors.grey.shade100,
           backgroundColor: Colors.transparent,
