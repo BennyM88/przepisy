@@ -64,7 +64,7 @@ class _RecipeStripesState extends State<RecipeStripes> {
                       ShowImage(
                           docID: _docIDs[index],
                           width: size.width,
-                          height: size.height * 0.12),
+                          height: size.height * 0.11),
                       Positioned(
                         top: 10,
                         left: 10,
