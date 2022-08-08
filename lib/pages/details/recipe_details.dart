@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_all_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
@@ -85,7 +86,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                                 _addToFav(true);
                               },
                               icon: const Icon(Icons.favorite),
-                              color: Colors.white,
+                              color: secondaryColor,
                               iconSize: 32,
                             ),
                           );
@@ -98,7 +99,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                                 _addToFav(false);
                               },
                               icon: const Icon(Icons.favorite_outline),
-                              color: Colors.white,
+                              color: secondaryColor,
                               iconSize: 32,
                             ),
                           );
@@ -113,7 +114,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   onTap: () => Navigator.pop(context),
                   child: const Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.white,
+                    color: secondaryColor,
                     size: 32,
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/splash_screen.dart';
 import 'package:przepisy/language.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme)
-              .apply(bodyColor: Colors.black)),
+              .apply(bodyColor: primaryColor)),
     );
   }
 }

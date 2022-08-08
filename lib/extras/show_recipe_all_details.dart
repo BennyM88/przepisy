@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:przepisy/constants.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ShowRecipeAllDetails extends StatelessWidget {
@@ -66,7 +67,7 @@ class ShowRecipeAllDetails extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Divider(
-                    color: Colors.black.withOpacity(0.5),
+                    color: primaryColor.withOpacity(0.5),
                   ),
                   Expanded(
                     child: DefaultTabController(
@@ -80,11 +81,11 @@ class ShowRecipeAllDetails extends StatelessWidget {
                               Tab(text: 'preparation'.tr),
                             ],
                             indicator: DotIndicator(
-                              color: Colors.black,
+                              color: primaryColor,
                               distanceFromCenter: 16,
                             ),
-                            labelColor: Colors.black,
-                            unselectedLabelColor: Colors.black.withOpacity(0.3),
+                            labelColor: primaryColor,
+                            unselectedLabelColor: primaryColor.withOpacity(0.3),
                             labelPadding:
                                 const EdgeInsets.symmetric(horizontal: 24.0),
                           ),
@@ -129,7 +130,7 @@ class ShowRecipeAllDetails extends StatelessWidget {
           }
         }
         return const Center(
-          child: CircularProgressIndicator(color: Colors.black),
+          child: CircularProgressIndicator(color: primaryColor),
         );
       }),
     );

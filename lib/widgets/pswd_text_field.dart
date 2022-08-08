@@ -8,7 +8,7 @@ Widget pswdTextField(controller) {
     child: Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: secondaryColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -29,7 +29,7 @@ Widget pswdTextField(controller) {
               value != null && value.length < 6 ? 'pswd_length'.tr : null,
           decoration: const InputDecoration(
             border: InputBorder.none,
-            prefixIcon: Icon(Icons.lock_outline, color: Colors.black),
+            prefixIcon: Icon(Icons.lock_outline, color: primaryColor),
           ),
         ),
       ),

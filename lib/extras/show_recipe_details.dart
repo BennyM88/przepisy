@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 
 class ShowRecipeDetails extends StatelessWidget {
   final String docID;
@@ -33,21 +34,22 @@ class ShowRecipeDetails extends StatelessWidget {
                       : const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: secondaryColor),
                 ),
                 Row(
                   children: [
                     Icon(
                       Icons.timer_outlined,
                       size: 16,
-                      color: isBlack ? Colors.black : Colors.white,
+                      color: isBlack ? primaryColor : secondaryColor,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       '${data['time']} min',
                       style: isBlack
                           ? const TextStyle(fontSize: 14)
-                          : const TextStyle(fontSize: 14, color: Colors.white),
+                          : const TextStyle(
+                              fontSize: 14, color: secondaryColor),
                     ),
                   ],
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:przepisy/constants.dart';
 
 class FavoriteNotLogged extends StatelessWidget {
   const FavoriteNotLogged({Key? key}) : super(key: key);
@@ -22,13 +23,13 @@ class FavoriteNotLogged extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: 'you_must'.tr,
-                    style: const TextStyle(fontSize: 18, color: Colors.black),
+                    style: const TextStyle(fontSize: 18, color: primaryColor),
                   ),
                   TextSpan(
                     text: 'login'.tr,
                     style: const TextStyle(
                         fontSize: 18,
-                        color: Colors.black,
+                        color: primaryColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ],

@@ -105,7 +105,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             child: DropdownButton(
               icon: const Icon(
                 Icons.language,
-                color: Colors.black,
+                color: primaryColor,
               ),
               underline: const SizedBox(),
               items: Country.languageList()
@@ -138,7 +138,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                 child: Icon(
               Icons.person_outline_rounded,
               size: 100,
-              color: Colors.black,
+              color: primaryColor,
             )),
             const SizedBox(height: 50),
             //email title
@@ -161,7 +161,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
-                color: Colors.black,
+                color: primaryColor,
                 thickness: 1,
               ),
             ),
@@ -198,7 +198,7 @@ class _AccountDetailsState extends State<AccountDetails> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: bigPadding),
               child: Divider(
-                color: Colors.black,
+                color: primaryColor,
                 thickness: 1,
               ),
             ),

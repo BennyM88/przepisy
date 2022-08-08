@@ -96,7 +96,7 @@ class _LoginState extends State<Login> {
             child: DropdownButton(
               icon: const Icon(
                 Icons.language,
-                color: Colors.black,
+                color: primaryColor,
               ),
               underline: const SizedBox(),
               items: Country.languageList()
@@ -179,7 +179,7 @@ class _LoginState extends State<Login> {
                                     child: Text(
                                       'sign_in'.tr,
                                       style: const TextStyle(
-                                          color: Colors.white,
+                                          color: secondaryColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14),
                                     ),
@@ -212,7 +212,7 @@ class _LoginState extends State<Login> {
                               const Expanded(
                                 child: Divider(
                                   thickness: 1,
-                                  color: Colors.black,
+                                  color: primaryColor,
                                 ),
                               ),
                               Padding(
@@ -223,7 +223,7 @@ class _LoginState extends State<Login> {
                               const Expanded(
                                 child: Divider(
                                   thickness: 1,
-                                  color: Colors.black,
+                                  color: primaryColor,
                                 ),
                               ),
                             ],

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/account/account_details.dart';
 import 'package:przepisy/pages/account/auth/auth.dart';
 
@@ -20,7 +21,7 @@ class Account extends StatelessWidget {
             }
           } else {
             return const Center(
-              child: CircularProgressIndicator(color: Colors.black),
+              child: CircularProgressIndicator(color: primaryColor),
             );
           }
         },

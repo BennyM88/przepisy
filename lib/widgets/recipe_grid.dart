@@ -127,7 +127,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                             height: size.height * 0.35,
                             width: size.width / 2,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: secondaryColor,
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
@@ -154,7 +154,7 @@ class _RecipeGridState extends State<RecipeGrid> {
                                 _deleteRecipe(_docIDs[index]);
                               },
                               icon: const Icon(Icons.favorite),
-                              color: Colors.white,
+                              color: secondaryColor,
                             ),
                           ),
                           Positioned(
@@ -174,7 +174,7 @@ class _RecipeGridState extends State<RecipeGrid> {
             }
           } else {
             return const Center(
-              child: CircularProgressIndicator(color: Colors.black),
+              child: CircularProgressIndicator(color: primaryColor),
             );
           }
         },

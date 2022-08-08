@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 
 class ShowImage extends StatelessWidget {
   final String docID;
@@ -33,7 +34,7 @@ class ShowImage extends StatelessWidget {
                   height: height,
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(color: Colors.black),
+                    child: CircularProgressIndicator(color: primaryColor),
                   ),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
@@ -49,7 +50,7 @@ class ShowImage extends StatelessWidget {
           width: 200,
           height: 180,
           child: Center(
-            child: CircularProgressIndicator(color: Colors.black),
+            child: CircularProgressIndicator(color: primaryColor),
           ),
         );
       }),

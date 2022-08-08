@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:przepisy/constants.dart';
 
 class AboutVersion extends StatefulWidget {
   const AboutVersion({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _AboutVersionState extends State<AboutVersion> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
+        foregroundColor: primaryColor,
       ),
       body: Center(
         child: Column(

@@ -69,13 +69,13 @@ class _HomeState extends State<Home> {
                         TextSpan(
                           text: 'find_your'.tr,
                           style: const TextStyle(
-                              fontSize: 24, color: Colors.black),
+                              fontSize: 24, color: primaryColor),
                         ),
                         TextSpan(
                           text: 'recipe'.tr,
                           style: const TextStyle(
                               fontSize: 24,
-                              color: Colors.black,
+                              color: primaryColor,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -146,11 +146,11 @@ class _HomeState extends State<Home> {
                             Tab(text: 'other'.tr),
                           ],
                           indicator: DotIndicator(
-                            color: Colors.black,
+                            color: primaryColor,
                             distanceFromCenter: 16,
                           ),
-                          labelColor: Colors.black,
-                          unselectedLabelColor: Colors.black.withOpacity(0.3),
+                          labelColor: primaryColor,
+                          unselectedLabelColor: primaryColor.withOpacity(0.3),
                           labelPadding: const EdgeInsets.symmetric(
                               horizontal: smallPadding),
                         ),
@@ -272,7 +272,7 @@ class CustomSearchDelegate extends SearchDelegate {
                   height: size.height * 0.35,
                   width: size.width / 2,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: secondaryColor,
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(

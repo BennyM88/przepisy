@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/favorite/fav_not_logged.dart';
 import 'package:przepisy/pages/favorite/favorite_recipes.dart';
 
@@ -20,7 +21,7 @@ class Favorite extends StatelessWidget {
             }
           } else {
             return const Center(
-              child: CircularProgressIndicator(color: Colors.black),
+              child: CircularProgressIndicator(color: primaryColor),
             );
           }
         },
