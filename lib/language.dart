@@ -23,6 +23,7 @@ class Language extends Translations {
           'yes_delete_recipe': 'Yes, delete recipe',
           'delete_recipe': 'Delete recipe',
           'are_u_sure_recipe': 'Are you sure you want to delete this recipe?',
+          'save_your_first_recipe': 'Save your first recipe!',
           //account
           'email_address': 'E-mail address',
           'creation_date': 'Creation date',
@@ -81,6 +82,7 @@ class Language extends Translations {
           'delete_recipe': 'Usuń przepis',
           'are_u_sure_recipe':
               'Czy jesteś pewny, że chcesz usunąć ten przepis?',
+          'save_your_first_recipe': 'Zapisz swój pierwszy przepis!',
           //account
           'email_address': 'Adres e-mail',
           'creation_date': 'Data założenia',

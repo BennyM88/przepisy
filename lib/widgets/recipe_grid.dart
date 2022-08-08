@@ -8,6 +8,7 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/details/recipe_details.dart';
+import 'package:przepisy/widgets/save_first_recipe.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
 import '../extras/show_recipe_details.dart';
 
@@ -101,71 +102,76 @@ class _RecipeGridState extends State<RecipeGrid> {
         future: _dataFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return GridView.builder(
-              itemCount: _docIDs.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: itemWidth / itemHeight),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                RecipeDetails(docID: _docIDs[index])));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(smallPadding / 2),
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: size.height * 0.35,
-                          width: size.width / 2,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade500,
-                                offset: const Offset(1, 2),
-                                blurRadius: 8,
-                                spreadRadius: 0.5,
-                              ),
-                            ],
+            if (_docIDs.isEmpty) {
+              return saveFirstRecipe(double.infinity, size.height * 0.4);
+            } else {
+              return GridView.builder(
+                itemCount: _docIDs.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: itemWidth / itemHeight),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  RecipeDetails(docID: _docIDs[index])));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(smallPadding / 2),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: size.height * 0.35,
+                            width: size.width / 2,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade500,
+                                  offset: const Offset(1, 2),
+                                  blurRadius: 8,
+                                  spreadRadius: 0.5,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: ShowImage(
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: ShowImage(
+                                docID: _docIDs[index],
+                                width: size.width / 2,
+                                height: size.height * 0.26),
+                          ),
+                          Positioned(
+                            top: 5,
+                            right: 5,
+                            child: IconButton(
+                              onPressed: () {
+                                _deleteRecipe(_docIDs[index]);
+                              },
+                              icon: const Icon(Icons.favorite),
+                              color: Colors.white,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: itemHeight / 14,
+                            left: 10,
+                            child: ShowRecipeDetails(
                               docID: _docIDs[index],
-                              width: size.width / 2,
-                              height: size.height * 0.26),
-                        ),
-                        Positioned(
-                          top: 5,
-                          right: 5,
-                          child: IconButton(
-                            onPressed: () {
-                              _deleteRecipe(_docIDs[index]);
-                            },
-                            icon: const Icon(Icons.favorite),
-                            color: Colors.white,
+                              isBlack: true,
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: itemHeight / 14,
-                          left: 10,
-                          child: ShowRecipeDetails(
-                            docID: _docIDs[index],
-                            isBlack: true,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
+                  );
+                },
+              );
+            }
           } else {
             return const Center(
               child: CircularProgressIndicator(color: Colors.black),
