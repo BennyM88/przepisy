@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
-import 'package:przepisy/pages/about_version.dart';
+import 'package:przepisy/pages/account/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../extras/country.dart';
-import '../transitions/enter_exit_route.dart';
-import '../widgets/snack_bar.dart';
+import '../../extras/country.dart';
+import '../../transitions/enter_exit_route.dart';
+import '../../widgets/snack_bar.dart';
 import 'account.dart';
 
 class AccountDetails extends StatefulWidget {
@@ -56,8 +56,10 @@ class _AccountDetailsState extends State<AccountDetails> {
       await doc.reference.delete();
     }
 
-    await user.delete().whenComplete(() => SnackBarWidget.infoSnackBar(
-        context, 'acc_deleted'.tr, Colors.grey.shade800));
+    await user.delete().whenComplete(
+          () => SnackBarWidget.infoSnackBar(
+              context, 'acc_deleted'.tr, Colors.grey.shade800),
+        );
     await googleSignIn.signOut();
   }
 
@@ -107,14 +109,17 @@ class _AccountDetailsState extends State<AccountDetails> {
               ),
               underline: const SizedBox(),
               items: Country.languageList()
-                  .map<DropdownMenuItem<Country>>((lang) => DropdownMenuItem(
+                  .map<DropdownMenuItem<Country>>(
+                    (lang) => DropdownMenuItem(
                       value: lang,
                       child: Row(
                         children: [
                           Text(lang.flag),
                           Text(lang.name),
                         ],
-                      )))
+                      ),
+                    ),
+                  )
                   .toList(),
               onChanged: (Country? country) {
                 _changeLanguage(country!);

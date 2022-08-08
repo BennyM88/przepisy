@@ -4,14 +4,13 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/country.dart';
-import 'package:przepisy/pages/account.dart';
-import 'package:przepisy/pages/auth/forgot_pswd.dart';
+import 'package:przepisy/pages/account/account.dart';
+import 'package:przepisy/pages/account/auth/forgot_pswd.dart';
+import 'package:przepisy/transitions/enter_exit_route.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 import 'package:przepisy/widgets/pswd_text_field.dart';
-
-import '../../transitions/enter_exit_route.dart';
-import '../../widgets/snack_bar.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 
 class Login extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -101,14 +100,17 @@ class _LoginState extends State<Login> {
               ),
               underline: const SizedBox(),
               items: Country.languageList()
-                  .map<DropdownMenuItem<Country>>((lang) => DropdownMenuItem(
+                  .map<DropdownMenuItem<Country>>(
+                    (lang) => DropdownMenuItem(
                       value: lang,
                       child: Row(
                         children: [
                           Text(lang.flag),
                           Text(lang.name),
                         ],
-                      )))
+                      ),
+                    ),
+                  )
                   .toList(),
               onChanged: (Country? country) {
                 _changeLanguage(country!);
@@ -208,20 +210,22 @@ class _LoginState extends State<Login> {
                           child: Row(
                             children: [
                               const Expanded(
-                                  child: Divider(
-                                thickness: 1,
-                                color: Colors.black,
-                              )),
+                                child: Divider(
+                                  thickness: 1,
+                                  color: Colors.black,
+                                ),
+                              ),
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 4.0),
                                 child: Text('connect_with'.tr),
                               ),
                               const Expanded(
-                                  child: Divider(
-                                thickness: 1,
-                                color: Colors.black,
-                              )),
+                                child: Divider(
+                                  thickness: 1,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ],
                           ),
                         ),

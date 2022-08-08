@@ -21,9 +21,9 @@ class FavoriteNotLogged extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                      text: 'you_must'.tr,
-                      style:
-                          const TextStyle(fontSize: 18, color: Colors.black)),
+                    text: 'you_must'.tr,
+                    style: const TextStyle(fontSize: 18, color: Colors.black),
+                  ),
                   TextSpan(
                     text: 'login'.tr,
                     style: const TextStyle(

@@ -48,7 +48,9 @@ class _FavoriteRecipesState extends State<FavoriteRecipes> {
                       height: size.height * 0.75,
                       child: Column(
                         children: const [
-                          Expanded(child: RecipeGrid()),
+                          Expanded(
+                            child: RecipeGrid(),
+                          ),
                         ],
                       )),
                 ),

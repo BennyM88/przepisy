@@ -31,17 +31,20 @@ class ShowImage extends StatelessWidget {
                 height: height,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(color: Colors.black)),
+                  child: CircularProgressIndicator(color: Colors.black),
+                ),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           );
         }
         return const SizedBox(
-            width: 200,
-            height: 180,
-            child:
-                Center(child: CircularProgressIndicator(color: Colors.black)));
+          width: 200,
+          height: 180,
+          child: Center(
+            child: CircularProgressIndicator(color: Colors.black),
+          ),
+        );
       }),
     );
   }

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/extras/show_image.dart';
-import 'package:przepisy/pages/recipe_details.dart';
+import 'package:przepisy/pages/details/recipe_details.dart';
 
 class RecipeCard extends StatefulWidget {
   RecipeCard({

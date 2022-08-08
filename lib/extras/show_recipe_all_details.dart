@@ -64,7 +64,9 @@ class ShowRecipeAllDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Divider(color: Colors.black.withOpacity(0.5)),
+                Divider(
+                  color: Colors.black.withOpacity(0.5),
+                ),
                 Expanded(
                   child: DefaultTabController(
                     length: 2,
@@ -121,7 +123,8 @@ class ShowRecipeAllDetails extends StatelessWidget {
           );
         }
         return const Center(
-            child: CircularProgressIndicator(color: Colors.black));
+          child: CircularProgressIndicator(color: Colors.black),
+        );
       }),
     );
   }

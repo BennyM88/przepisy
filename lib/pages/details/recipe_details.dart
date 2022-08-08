@@ -103,18 +103,6 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                             ),
                           );
                         }
-                        /*return Positioned(
-                          top: 30,
-                          right: 15,
-                          child: IconButton(
-                            onPressed: addToFav,
-                            icon: (snapshot.data?.exists ?? false) && _isLiked
-                                ? const Icon(Icons.favorite)
-                                : const Icon(Icons.favorite_outline),
-                            color: Colors.white,
-                            iconSize: 32,
-                          ),
-                        );*/
                       },
                     )
                   : const Text(''),

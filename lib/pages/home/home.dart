@@ -7,7 +7,7 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/widgets/recipe_card.dart';
 import 'package:przepisy/extras/show_image.dart';
-import 'package:przepisy/pages/recipe_details.dart';
+import 'package:przepisy/pages/details/recipe_details.dart';
 import 'package:przepisy/widgets/recipe_stripes.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -67,9 +67,10 @@ class _HomeState extends State<Home> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: 'find_your'.tr,
-                            style: const TextStyle(
-                                fontSize: 24, color: Colors.black)),
+                          text: 'find_your'.tr,
+                          style: const TextStyle(
+                              fontSize: 24, color: Colors.black),
+                        ),
                         TextSpan(
                           text: 'recipe'.tr,
                           style: const TextStyle(
@@ -97,8 +98,9 @@ class _HomeState extends State<Home> {
                     child: Container(
                       padding: const EdgeInsets.only(left: smallPadding / 2),
                       decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(8)),
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(

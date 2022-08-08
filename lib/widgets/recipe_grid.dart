@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/show_recipe_details.dart';
 import 'package:przepisy/extras/show_image.dart';
-import 'package:przepisy/pages/recipe_details.dart';
+import 'package:przepisy/pages/details/recipe_details.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
 import '../extras/show_recipe_details.dart';
 
@@ -67,8 +67,10 @@ class _RecipeGridState extends State<RecipeGrid> {
                     .collection('liked')
                     .doc(id)
                     .delete()
-                    .whenComplete(() => SnackBarWidget.infoSnackBar(
-                        context, 'removed_fav'.tr, Colors.grey.shade800));
+                    .whenComplete(
+                      () => SnackBarWidget.infoSnackBar(
+                          context, 'removed_fav'.tr, Colors.grey.shade800),
+                    );
                 _refreshRecipes(context);
                 Navigator.pop(context);
               },
@@ -166,7 +168,8 @@ class _RecipeGridState extends State<RecipeGrid> {
             );
           } else {
             return const Center(
-                child: CircularProgressIndicator(color: Colors.black));
+              child: CircularProgressIndicator(color: Colors.black),
+            );
           }
         },
       ),

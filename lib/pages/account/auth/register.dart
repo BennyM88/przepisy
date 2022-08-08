@@ -6,8 +6,7 @@ import 'package:przepisy/widgets/custom_button.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 import 'package:przepisy/widgets/pswd_text_field.dart';
-
-import '../../widgets/snack_bar.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 
 class Register extends StatefulWidget {
   final VoidCallback showLoginPage;

@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/widgets/custom_button.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
-
-import '../../widgets/snack_bar.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
