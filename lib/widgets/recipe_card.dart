@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, avoid_function_literals_in_foreach_calls
+// ignore_for_file: avoid_function_literals_in_foreach_calls
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/details/recipe_details.dart';
 
 class RecipeCard extends StatefulWidget {
-  RecipeCard({
+  const RecipeCard({
     Key? key,
     required this.category,
   }) : super(key: key);

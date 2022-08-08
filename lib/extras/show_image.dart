@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: use_key_in_widget_constructors
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,7 +10,8 @@ class ShowImage extends StatelessWidget {
   final double height;
   static Map<String, dynamic> data = {};
 
-  ShowImage({required this.docID, required this.width, required this.height});
+  const ShowImage(
+      {required this.docID, required this.width, required this.height});
 
   @override
   Widget build(BuildContext context) {

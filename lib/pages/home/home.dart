@@ -156,7 +156,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(
                           height: size.height * 0.3,
-                          child: TabBarView(
+                          child: const TabBarView(
                             children: [
                               RecipeCard(category: 'w'),
                               RecipeCard(category: 's'),

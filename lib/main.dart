@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, prefer_const_constructors
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       translations: Language(),
       locale: Get.deviceLocale,
-      fallbackLocale: Locale('pl', 'PL'),
+      fallbackLocale: const Locale('pl', 'PL'),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme)

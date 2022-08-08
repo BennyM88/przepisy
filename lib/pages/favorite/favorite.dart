@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:przepisy/pages/favorite/fav_not_logged.dart';
@@ -16,12 +14,12 @@ class Favorite extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return FavoriteRecipes();
+              return const FavoriteRecipes();
             } else {
-              return FavoriteNotLogged();
+              return const FavoriteNotLogged();
             }
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(color: Colors.black),
             );
           }

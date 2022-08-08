@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: use_key_in_widget_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ class ShowRecipeAllDetails extends StatelessWidget {
   final String docID;
   static Map<String, dynamic> data = {};
 
-  ShowRecipeAllDetails({required this.docID});
+  const ShowRecipeAllDetails({required this.docID});
 
   @override
   Widget build(BuildContext context) {
