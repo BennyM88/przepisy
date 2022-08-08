@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:przepisy/constants.dart';
 import 'package:przepisy/extras/country.dart';
 import 'package:przepisy/pages/account.dart';
-import 'package:przepisy/pages/auth/forgot_pw_page.dart';
+import 'package:przepisy/pages/auth/forgot_pswd.dart';
 import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 import 'package:przepisy/widgets/pswd_text_field.dart';
@@ -13,15 +13,15 @@ import 'package:przepisy/widgets/pswd_text_field.dart';
 import '../../transitions/enter_exit_route.dart';
 import '../../widgets/snack_bar.dart';
 
-class LoginPage extends StatefulWidget {
+class Login extends StatefulWidget {
   final VoidCallback showRegisterPage;
-  const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
+  const Login({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -190,8 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context,
                                       EnterExitRoute(
                                           exitPage: const Account(),
-                                          enterPage:
-                                              const ForgotPasswordPage()));
+                                          enterPage: const ForgotPassword()));
                                 },
                                 child: Text(
                                   'forgot_pswd'.tr,

@@ -9,14 +9,14 @@ import 'package:przepisy/widgets/email_text_field.dart';
 
 import '../../widgets/snack_bar.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
 

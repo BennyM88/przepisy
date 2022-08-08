@@ -9,15 +9,15 @@ import 'package:przepisy/widgets/pswd_text_field.dart';
 
 import '../../widgets/snack_bar.dart';
 
-class RegisterPage extends StatefulWidget {
+class Register extends StatefulWidget {
   final VoidCallback showLoginPage;
-  const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
+  const Register({Key? key, required this.showLoginPage}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterState extends State<Register> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
