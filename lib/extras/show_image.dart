@@ -21,23 +21,29 @@ class ShowImage extends StatelessWidget {
       future: przepisy.doc(docID).get(),
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          data = snapshot.data!.data() as Map<String, dynamic>;
-          return Align(
-            alignment: AlignmentDirectional.topCenter,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: CachedNetworkImage(
-                imageUrl: data['url'],
-                width: width,
-                height: height,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(color: Colors.black),
+          if (snapshot.hasData) {
+            data = snapshot.data!.data() as Map<String, dynamic>;
+            return Align(
+              alignment: AlignmentDirectional.topCenter,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: CachedNetworkImage(
+                  imageUrl: data['url'],
+                  width: width,
+                  height: height,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(color: Colors.black),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-            ),
-          );
+            );
+          } else if (snapshot.hasError) {
+            return const Center(
+              child: Icon(Icons.error),
+            );
+          }
         }
         return const SizedBox(
           width: 200,
