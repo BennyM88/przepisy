@@ -37,6 +37,10 @@ class Language extends Translations {
           'acc_deleted': 'The account has been deleted',
           'version_number': 'Version ',
           'rights': 'All rights reserved',
+          'by_signing_up': 'By signing up, you agree to our ',
+          'terms': 'Terms of Service',
+          'and': ' and ',
+          'privacy': 'Privacy Policy',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -96,6 +100,10 @@ class Language extends Translations {
           'acc_deleted': 'Konto zostało usunięte',
           'version_number': 'Wersja ',
           'rights': 'Wszelkie prawa zastrzeżone',
+          'by_signing_up': 'Rejestrując się, zgadzasz się z naszym ',
+          'terms': 'Regulaminem świadczenia usług',
+          'and': ' oraz ',
+          'privacy': 'Polityką Prywatności',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',

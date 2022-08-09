@@ -145,6 +145,39 @@ class _RegisterState extends State<Register> {
                             ],
                           ),
                         ),
+                        const SizedBox(height: 30),
+                        //privacy policy
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: bigPadding),
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              style: const TextStyle(
+                                  fontSize: 14, color: primaryColor),
+                              children: [
+                                TextSpan(
+                                  text: 'by_signing_up'.tr,
+                                ),
+                                TextSpan(
+                                  text: 'terms'.tr,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                                TextSpan(
+                                  text: 'and'.tr,
+                                ),
+                                TextSpan(
+                                  text: 'privacy'.tr,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -65,18 +65,14 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.symmetric(horizontal: smallPadding),
                   child: RichText(
                     text: TextSpan(
+                      style: const TextStyle(fontSize: 24, color: primaryColor),
                       children: [
                         TextSpan(
                           text: 'find_your'.tr,
-                          style: const TextStyle(
-                              fontSize: 24, color: primaryColor),
                         ),
                         TextSpan(
                           text: 'recipe'.tr,
-                          style: const TextStyle(
-                              fontSize: 24,
-                              color: primaryColor,
-                              fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

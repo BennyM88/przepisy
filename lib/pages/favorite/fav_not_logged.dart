@@ -20,17 +20,14 @@ class FavoriteNotLogged extends StatelessWidget {
             const SizedBox(height: 20),
             RichText(
               text: TextSpan(
+                style: const TextStyle(fontSize: 18, color: primaryColor),
                 children: [
                   TextSpan(
                     text: 'you_must'.tr,
-                    style: const TextStyle(fontSize: 18, color: primaryColor),
                   ),
                   TextSpan(
                     text: 'login'.tr,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        color: primaryColor,
-                        fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
