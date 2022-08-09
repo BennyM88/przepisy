@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:przepisy/constants.dart';
@@ -7,6 +8,7 @@ import 'package:przepisy/widgets/email_text_field.dart';
 import 'package:przepisy/widgets/loading.dart';
 import 'package:przepisy/widgets/pswd_text_field.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Register extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -22,6 +24,10 @@ class _RegisterState extends State<Register> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   bool _isLoading = false;
+  final Uri _terms =
+      Uri.parse('https://pages.flycricket.io/przepisy-sylwii/terms.html');
+  final Uri _privacy =
+      Uri.parse('https://pages.flycricket.io/przepisy-sylwii/privacy.html');
 
   Future<void> _signUp() async {
     FocusManager.instance.primaryFocus?.unfocus();
@@ -57,6 +63,10 @@ class _RegisterState extends State<Register> {
     } else {
       return false;
     }
+  }
+
+  void _launchUrl(Uri uri) async {
+    if (!await launchUrl(uri)) throw 'Could not launch $uri';
   }
 
   @override
@@ -164,6 +174,10 @@ class _RegisterState extends State<Register> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.blue),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = (() {
+                                      _launchUrl(_terms);
+                                    }),
                                 ),
                                 TextSpan(
                                   text: 'and'.tr,
@@ -173,6 +187,10 @@ class _RegisterState extends State<Register> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.blue),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = (() {
+                                      _launchUrl(_privacy);
+                                    }),
                                 ),
                               ],
                             ),

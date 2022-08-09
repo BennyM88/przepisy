@@ -38,7 +38,7 @@ class Language extends Translations {
           'version_number': 'Version ',
           'rights': 'All rights reserved',
           'by_signing_up': 'By signing up, you agree to our ',
-          'terms': 'Terms of Service',
+          'terms': 'Terms',
           'and': ' and ',
           'privacy': 'Privacy Policy',
           //auth
@@ -101,7 +101,7 @@ class Language extends Translations {
           'version_number': 'Wersja ',
           'rights': 'Wszelkie prawa zastrzeżone',
           'by_signing_up': 'Rejestrując się, zgadzasz się z naszym ',
-          'terms': 'Regulaminem świadczenia usług',
+          'terms': 'Regulaminem',
           'and': ' oraz ',
           'privacy': 'Polityką Prywatności',
           //auth
