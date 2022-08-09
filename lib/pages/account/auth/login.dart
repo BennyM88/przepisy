@@ -230,10 +230,34 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: _signInWithGoogle,
-                          child: Center(
-                            child: Image.asset('assets/google.png'),
+                        //google sign in
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: smallPadding),
+                          child: GestureDetector(
+                            onTap: _signInWithGoogle,
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: primaryColor),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.asset(
+                                    'assets/google.png',
+                                    width: size.width / 14,
+                                  ),
+                                  Text(
+                                    'continue_with_google'.tr,
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                  const Text(''),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),

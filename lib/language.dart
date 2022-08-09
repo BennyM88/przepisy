@@ -59,6 +59,7 @@ class Language extends Translations {
           'have_acc': 'ALREADY HAVE AN ACCOUNT?',
           'connect_with': 'CONNECT WITH',
           'check_email': 'Check your e-mail!',
+          'continue_with_google': 'Continue with Google',
           //details
           'ingredients': 'Ingredients',
           'preparation': 'Preparation',
@@ -122,6 +123,7 @@ class Language extends Translations {
           'have_acc': 'MASZ JUŻ KONTO?',
           'connect_with': 'POŁĄCZ Z',
           'check_email': 'Sprawdź swój e-mail!',
+          'continue_with_google': 'Kontynuuj z Google',
           //details
           'ingredients': 'Składniki',
           'preparation': 'Przygotowanie',
