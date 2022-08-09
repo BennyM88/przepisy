@@ -41,6 +41,8 @@ class Language extends Translations {
           'terms': 'Terms',
           'and': ' and ',
           'privacy': 'Privacy Policy',
+          'terms_acc': 'Terms',
+          'privacy_acc': 'Privacy Policy',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -105,6 +107,8 @@ class Language extends Translations {
           'terms': 'Regulaminem',
           'and': ' oraz ',
           'privacy': 'Polityką Prywatności',
+          'terms_acc': 'Regulamin',
+          'privacy_acc': 'Polityka Prywatności',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',

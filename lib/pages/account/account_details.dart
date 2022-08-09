@@ -26,6 +26,10 @@ class _AccountDetailsState extends State<AccountDetails> {
       scheme: 'mailto',
       path: 'sosodexx@gmail.com', //CHANGE EMAIL!!!!
       query: 'subject=Support&body=How can we help you?');
+  final Uri _terms =
+      Uri.parse('https://pages.flycricket.io/przepisy-sylwii/terms.html');
+  final Uri _privacy =
+      Uri.parse('https://pages.flycricket.io/przepisy-sylwii/privacy.html');
 
   void _changeLanguage(Country country) {
     var localeUS = const Locale('en', 'US');
@@ -209,6 +213,24 @@ class _AccountDetailsState extends State<AccountDetails> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //privacy policy
+                  GestureDetector(
+                    onTap: () => _launchUrl(_privacy),
+                    child: Text(
+                      'privacy_acc'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  //terms
+                  GestureDetector(
+                    onTap: () => _launchUrl(_terms),
+                    child: Text(
+                      'terms_acc'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   //version
                   GestureDetector(
                     onTap: () {
