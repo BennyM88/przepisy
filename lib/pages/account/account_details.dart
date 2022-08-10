@@ -7,9 +7,9 @@ import 'package:przepisy/constants.dart';
 import 'package:przepisy/pages/account/about_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../extras/country.dart';
-import '../../transitions/enter_exit_route.dart';
-import '../../widgets/snack_bar.dart';
+import 'package:przepisy/extras/country.dart';
+import 'package:przepisy/transitions/enter_exit_route.dart';
+import 'package:przepisy/widgets/snack_bar.dart';
 import 'account.dart';
 
 class AccountDetails extends StatefulWidget {

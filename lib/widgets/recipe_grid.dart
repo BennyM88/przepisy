@@ -10,7 +10,6 @@ import 'package:przepisy/extras/show_image.dart';
 import 'package:przepisy/pages/details/recipe_details.dart';
 import 'package:przepisy/widgets/save_first_recipe.dart';
 import 'package:przepisy/widgets/snack_bar.dart';
-import '../extras/show_recipe_details.dart';
 
 class RecipeGrid extends StatefulWidget {
   const RecipeGrid({Key? key}) : super(key: key);
