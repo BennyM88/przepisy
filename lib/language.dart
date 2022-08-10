@@ -43,6 +43,7 @@ class Language extends Translations {
           'privacy': 'Privacy Policy',
           'terms_acc': 'Terms',
           'privacy_acc': 'Privacy Policy',
+          'first_logout': 'Sign in again to delete your account',
           //auth
           'incorrect_data': 'Incorrect data, user does not exist',
           'incorrect_email': 'Enter a valid e-mail',
@@ -109,6 +110,7 @@ class Language extends Translations {
           'privacy': 'Polityką Prywatności',
           'terms_acc': 'Regulamin',
           'privacy_acc': 'Polityka Prywatności',
+          'first_logout': 'Zaloguj się ponownie żeby usunąć konto',
           //auth
           'incorrect_data': 'Błędne dane, użytkownik nie istnieje',
           'incorrect_email': 'Wprowadź poprawny e-mail',

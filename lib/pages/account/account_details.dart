@@ -60,11 +60,30 @@ class _AccountDetailsState extends State<AccountDetails> {
       await doc.reference.delete();
     }
 
-    await user.delete().whenComplete(
-          () => SnackBarWidget.infoSnackBar(
-              context, 'acc_deleted'.tr, Colors.grey.shade800),
-        );
+    await user.delete();
+
     await googleSignIn.signOut();
+
+    if (mounted) {
+      SnackBarWidget.infoSnackBar(
+          context, 'acc_deleted'.tr, Colors.grey.shade800);
+    }
+  }
+
+  Future<void> _logOutBeforeDeleteDialog() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('first_logout'.tr),
+            actions: [
+              MaterialButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              )
+            ],
+          );
+        });
   }
 
   Future<void> _deleteAccDialog() async {
@@ -76,9 +95,13 @@ class _AccountDetailsState extends State<AccountDetails> {
           content: Text('are_u_sure'.tr),
           actions: [
             MaterialButton(
-              onPressed: () {
-                _deleteAcc();
+              onPressed: () async {
                 Navigator.pop(context);
+                try {
+                  await _deleteAcc();
+                } on FirebaseAuthException {
+                  _logOutBeforeDeleteDialog();
+                }
               },
               child: Text(
                 'yes_delete'.tr,
