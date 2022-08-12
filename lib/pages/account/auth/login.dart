@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,6 +55,12 @@ class _LoginState extends State<Login> {
 
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>['email']).signIn();
+
+    if (googleUser == null) {
+      _isLoading = false;
+      if (mounted) setState(() {});
+      SnackBarWidget.infoSnackBar(context, 'login_failed'.tr, Colors.red);
+    }
 
     final GoogleSignInAuthentication googleAuth =
         await googleUser!.authentication;

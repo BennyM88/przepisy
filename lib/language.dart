@@ -63,6 +63,7 @@ class Language extends Translations {
           'connect_with': 'CONNECT WITH',
           'check_email': 'Check your e-mail!',
           'continue_with_google': 'Continue with Google',
+          'login_failed': 'Login failed',
           //details
           'ingredients': 'Ingredients',
           'preparation': 'Preparation',
@@ -130,6 +131,7 @@ class Language extends Translations {
           'connect_with': 'POŁĄCZ Z',
           'check_email': 'Sprawdź swój e-mail!',
           'continue_with_google': 'Kontynuuj z Google',
+          'login_failed': 'Logowanie się nie powiodło',
           //details
           'ingredients': 'Składniki',
           'preparation': 'Przygotowanie',
