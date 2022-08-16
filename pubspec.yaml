@@ -58,7 +58,7 @@ dependencies:
   #firebase
   cloud_firestore: ^3.2.1
   firebase_auth: ^3.4.2
-  google_sign_in: ^5.4.0
+  google_sign_in: ^5.3.3
 
   #state manager
   get: ^4.6.5
