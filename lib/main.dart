@@ -20,7 +20,7 @@ Future<void> mainCommon(String env) async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);a
 
   @override
   Widget build(BuildContext context) {
