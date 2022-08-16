@@ -5,12 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:przepisy/constants.dart';
+import 'package:przepisy/extras/config_reader.dart';
 import 'package:przepisy/extras/splash_screen.dart';
 import 'package:przepisy/language.dart';
 import 'package:flutter/services.dart';
 
-Future main() async {
+Future<void> mainCommon(String env) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ConfigReader.initialize(env);
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
